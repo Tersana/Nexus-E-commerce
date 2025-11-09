@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - Online Shopping</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="logo-text">amazon</span>
+            </div>
+            <div class="search-container">
+                <select class="search-category">
+                    <option>All</option>
+                    <option>Electronics</option>
+                    <option>Fashion</option>
+                    <option>Home & Kitchen</option>
+                    <option>Books</option>
+                </select>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search Amazon">
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-item" id="signInHeaderItem">
+                    <span class="header-line-1">Hello, Sign in</span>
+                    <span class="header-line-2">Account & Lists</span>
+                </div>
+                <div class="header-item" id="ordersHeaderItem">
+                    <span class="header-line-1">Returns</span>
+                    <span class="header-line-2">& Orders</span>
+                </div>
+                <div class="header-item cart" onclick="openCart()">
+                    <div class="cart-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <span class="header-line-2">Cart</span>
+                </div>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                All
+            </a>
+            <a href="deals.html" class="nav-link">Today's Deals</a>
+            <a href="customer-service.html" class="nav-link">Customer Service</a>
+            <a href="registry.html" class="nav-link">Registry</a>
+            <a href="gift-cards.html" class="nav-link">Gift Cards</a>
+            <a href="sell.html" class="nav-link">Sell</a>
+            <a href="electronics.html" class="nav-link">Electronics</a>
+            <a href="fashion.html" class="nav-link">Fashion</a>
+            <a href="home-kitchen.html" class="nav-link">Home & Kitchen</a>
+            <a href="books.html" class="nav-link">Books</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="hero-carousel">
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <h2>Shop the Latest Electronics</h2>
+                    <p>Up to 50% off on selected items</p>
+                    <button class="hero-btn">Shop Now</button>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <h2>Fashion Sale</h2>
+                    <p>New arrivals with amazing discounts</p>
+                    <button class="hero-btn">Explore</button>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <h2>Home & Kitchen</h2>
+                    <p>Transform your living space</p>
+                    <button class="hero-btn">Discover</button>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="main-content">
+        <!-- Today's Deals -->
+        <section class="product-section">
+            <div class="section-header">
+                <h2>Today's Deals</h2>
+                <a href="#" class="see-all">See all deals</a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-badge">-30%</div>
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Laptop">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" onclick="showProductDetail(0)">Gaming Laptop Pro 15"</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(2,345)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG899.99</span>
+                            <span class="price-original">EG1,299.99</span>
+                        </div>
+                        <button class="add-to-cart-btn" data-product-id="0">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">-25%</div>
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Headphones">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Noise Cancelling Headphones</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(1,892)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG149.99</span>
+                            <span class="price-original">EG199.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Smartphone">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Smartphone X Pro 256GB</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(5,234)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG599.99</span>
+                            <span class="price-original">EG999.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">-20%</div>
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Smart Watch">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Smart Watch Series 8</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(3,456)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG239.99</span>
+                            <span class="price-original">EG299.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Electronics -->
+        <section class="product-section">
+            <div class="section-header">
+                <h2>Electronics</h2>
+                <a href="#" class="see-all">Shop now</a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tablet Pro 12.9"</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(4,123)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG449.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Speaker">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bluetooth Speaker Premium</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(2,789)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG79.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Keyboard">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mechanical Gaming Keyboard</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(1,567)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG129.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Monitor">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">4K Ultra HD Monitor 27"</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(3,234)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG349.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fashion -->
+        <section class="product-section">
+            <div class="section-header">
+                <h2>Fashion & Clothing</h2>
+                <a href="#" class="see-all">Shop now</a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="T-Shirt">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Cotton T-Shirt</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(5,678)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG24.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Jeans">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Classic Fit Jeans</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(4,234)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG49.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Sneakers">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Running Sneakers Pro</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(6,789)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG89.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Winter Jacket Warm</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(2,345)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG79.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home & Kitchen -->
+        <section class="product-section">
+            <div class="section-header">
+                <h2>Home & Kitchen</h2>
+                <a href="#" class="see-all">Shop now</a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Coffee Maker">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Espresso Coffee Maker</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(3,456)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG159.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Blender">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Professional Blender</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(2,123)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG99.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Vacuum">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Robot Vacuum Cleaner</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(4,567)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG299.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Air Fryer">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Digital Air Fryer 5.5L</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(3,789)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">EG119.99</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Get to Know Us</h3>
+                <ul>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">About Amazon</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Amazon Devices</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Make Money with Us</h3>
+                <ul>
+                    <li><a href="#">Sell products on Amazon</a></li>
+                    <li><a href="#">Sell on Amazon Business</a></li>
+                    <li><a href="#">Sell apps on Amazon</a></li>
+                    <li><a href="#">Become an Affiliate</a></li>
+                    <li><a href="#">Advertise Your Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Amazon Payment Products</h3>
+                <ul>
+                    <li><a href="#">Amazon Business Card</a></li>
+                    <li><a href="#">Shop with Points</a></li>
+                    <li><a href="#">Reload Your Balance</a></li>
+                    <li><a href="#">Amazon Currency Converter</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Need Help?</h3>
+                <ul>
+                    <li><a href="#">COVID-19 and Amazon</a></li>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Your Orders</a></li>
+                    <li><a href="#">Shipping Rates & Policies</a></li>
+                    <li><a href="#">Returns & Replacements</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                <span class="logo-text">amazon</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Conditions of Use</a>
+                <a href="#">Privacy Notice</a>
+                <a href="#">Interest-Based Ads</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 1996-2024, Amazon.com, Inc. or its affiliates</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <p>Your cart is empty</p>
+                <button class="continue-shopping-btn" onclick="closeCart()">Continue Shopping</button>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="subtotal">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">EG0.00</span>
+                </div>
+                <div class="tax">
+                    <span>Tax (14%):</span>
+                    <span id="cartTax">EG0.00</span>
+                </div>
+                <div class="total">
+                    <span>Total:</span>
+                    <span id="cartTotal">EG0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be inserted here -->
+            </div>
+        </div>
+        <div class="modal-overlay" id="modalOverlay"></div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <button class="close-checkout" id="closeCheckout">&times;</button>
+            <h2>Checkout</h2>
+            <div class="checkout-form">
+                <div class="form-section">
+                    <h3>Shipping Information</h3>
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+                    <input type="text" id="address" placeholder="Street Address" required>
+                    <div class="form-row">
+                        <input type="text" id="city" placeholder="City" required>
+                        <input type="text" id="zipCode" placeholder="ZIP Code" required>
+                    </div>
+                    <select id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="EG">Egypt</option>
+                        <option value="US">United States</option>
+                        <option value="UK">United Kingdom</option>
+                    </select>
+                </div>
+                <div class="form-section">
+                    <h3>Payment Information</h3>
+                    <input type="text" id="cardNumber" placeholder="Card Number" maxlength="19" required>
+                    <div class="form-row">
+                        <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                        <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkoutItems"></div>
+                    <div class="summary-total">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="checkoutSubtotal">EG0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (14%):</span>
+                            <span id="checkoutTax">EG0.00</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span>Total:</span>
+                            <span id="checkoutTotal">EG0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="place-order-btn" id="placeOrderBtn">Place Order</button>
+            </div>
+        </div>
+        <div class="checkout-overlay" id="checkoutOverlay"></div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your purchase. Your order confirmation has been sent to your email.</p>
+            <p class="order-id">Order ID: <span id="orderId"></span></p>
+            <button class="continue-shopping-btn" onclick="closeSuccessModal()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="signin-modal" id="signInModal">
+        <div class="signin-content">
+            <button class="close-signin" id="closeSignIn">&times;</button>
+            <div class="signin-header">
+                <h2>Sign in</h2>
+            </div>
+            
+            <!-- Sign In Tab -->
+            <div id="signInTab">
+                <form id="signInForm" class="signin-form">
+                    <div class="form-group">
+                        <label for="signInEmail">Email or mobile phone number</label>
+                        <input type="email" id="signInEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signInPassword">Password</label>
+                        <input type="password" id="signInPassword" required>
+                    </div>
+                    <button type="submit" class="signin-btn">Sign in</button>
+                </form>
+                <div class="signin-footer">
+                    <p>New to Amazon? <a href="#" id="switchToCreate">Create your Amazon account</a></p>
+                </div>
+            </div>
+            
+            <!-- Create Account Tab -->
+            <div id="createAccountTab" style="display: none;">
+                <form id="createAccountForm" class="signin-form">
+                    <div class="form-group">
+                        <label for="createName">Your name</label>
+                        <input type="text" id="createName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createEmail">Email</label>
+                        <input type="email" id="createEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createPassword">Password</label>
+                        <input type="password" id="createPassword" placeholder="At least 6 characters" minlength="6" required>
+                    </div>
+                    <button type="submit" class="signin-btn">Create account</button>
+                </form>
+                <div class="signin-footer">
+                    <p>Already have an account? <a href="#" id="switchToSignIn">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="signin-overlay" id="signInOverlay"></div>
+    </div>
+
+    <script>
+        // Product Data Structure
+        const products = [
+            { id: 0, name: "Gaming Laptop Pro 15\"", price: 899.99, originalPrice: 1299.99, category: "Electronics", image: "1.jpg", rating: 5, reviews: 2345, description: "High-performance gaming laptop with RTX graphics, 16GB RAM, and 512GB SSD. Perfect for gaming and professional work.", badge: "-30%" },
+            { id: 1, name: "Wireless Noise Cancelling Headphones", price: 149.99, originalPrice: 199.99, category: "Electronics", image: "1.jpg", rating: 4, reviews: 1892, description: "Premium wireless headphones with active noise cancellation, 30-hour battery life, and superior sound quality.", badge: "-25%" },
+            { id: 2, name: "Smartphone X Pro 256GB", price: 599.99, originalPrice: 999.99, category: "Electronics", image: "1.jpg", rating: 5, reviews: 5234, description: "Latest flagship smartphone with advanced camera system, 5G connectivity, and all-day battery life.", badge: "-40%" },
+            { id: 3, name: "Smart Watch Series 8", price: 239.99, originalPrice: 299.99, category: "Electronics", image: "1.jpg", rating: 4, reviews: 3456, description: "Feature-rich smartwatch with health tracking, GPS, and water resistance up to 50m.", badge: "-20%" },
+            { id: 4, name: "Tablet Pro 12.9\"", price: 449.99, category: "Electronics", image: "1.jpg", rating: 5, reviews: 4123, description: "Professional tablet with stunning display, powerful processor, and support for Apple Pencil.", badge: null },
+            { id: 5, name: "Bluetooth Speaker Premium", price: 79.99, category: "Electronics", image: "1.jpg", rating: 4, reviews: 2789, description: "Portable Bluetooth speaker with 360-degree sound, waterproof design, and 20-hour battery.", badge: null },
+            { id: 6, name: "Mechanical Gaming Keyboard", price: 129.99, category: "Electronics", image: "1.jpg", rating: 5, reviews: 1567, description: "RGB mechanical keyboard with customizable keys, anti-ghosting technology, and ergonomic design.", badge: null },
+            { id: 7, name: "4K Ultra HD Monitor 27\"", price: 349.99, category: "Electronics", image: "1.jpg", rating: 4, reviews: 3234, description: "Crystal-clear 4K monitor with HDR support, fast refresh rate, and adjustable stand.", badge: null },
+            { id: 8, name: "Premium Cotton T-Shirt", price: 24.99, category: "Fashion", image: "1.jpg", rating: 4, reviews: 5678, description: "Comfortable cotton t-shirt with modern fit, available in multiple colors and sizes.", badge: null },
+            { id: 9, name: "Classic Fit Jeans", price: 49.99, category: "Fashion", image: "1.jpg", rating: 5, reviews: 4234, description: "Classic fit jeans with stretch fabric, durable construction, and timeless style.", badge: null },
+            { id: 10, name: "Running Sneakers Pro", price: 89.99, category: "Fashion", image: "1.jpg", rating: 5, reviews: 6789, description: "Professional running shoes with advanced cushioning, breathable mesh, and superior traction.", badge: null },
+            { id: 11, name: "Winter Jacket Warm", price: 79.99, category: "Fashion", image: "1.jpg", rating: 4, reviews: 2345, description: "Insulated winter jacket with water-resistant exterior and cozy fleece lining.", badge: null },
+            { id: 12, name: "Espresso Coffee Maker", price: 159.99, category: "Home & Kitchen", image: "1.jpg", rating: 5, reviews: 3456, description: "Professional espresso machine with milk frother, programmable settings, and compact design.", badge: null },
+            { id: 13, name: "Professional Blender", price: 99.99, category: "Home & Kitchen", image: "1.jpg", rating: 4, reviews: 2123, description: "High-powered blender with multiple speed settings, perfect for smoothies and food prep.", badge: null },
+            { id: 14, name: "Robot Vacuum Cleaner", price: 299.99, category: "Home & Kitchen", image: "1.jpg", rating: 5, reviews: 4567, description: "Smart robot vacuum with app control, mapping technology, and self-emptying base.", badge: null },
+            { id: 15, name: "Digital Air Fryer 5.5L", price: 119.99, category: "Home & Kitchen", image: "1.jpg", rating: 4, reviews: 3789, description: "Large capacity air fryer with digital display, multiple cooking modes, and easy-clean design.", badge: null }
+        ];
+
+        // Shopping Cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProducts();
+            initializeCart();
+            initializeSearch();
+            initializeCarousel();
+            initializeModals();
+            updateCartCount();
+        });
+
+        // Initialize Products
+        function initializeProducts() {
+            const buttons = document.querySelectorAll('.add-to-cart-btn');
+            buttons.forEach((button, index) => {
+                if (!button.hasAttribute('data-product-id')) {
+                    button.setAttribute('data-product-id', index);
+                }
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-product-id'));
+                    addToCart(productId);
+                });
+            });
+
+            // Add click handlers to product titles
+            document.querySelectorAll('.product-title').forEach((title, index) => {
+                if (!title.hasAttribute('onclick')) {
+                    title.style.cursor = 'pointer';
+                    title.addEventListener('click', () => showProductDetail(index));
+                }
+            });
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products[productId];
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartCount();
+            updateCartDisplay();
+            
+            // Button feedback
+            const button = document.querySelector(`[data-product-id="${productId}"]`);
+            if (button) {
+                const originalText = button.textContent;
+                button.textContent = 'Added!';
+                button.style.backgroundColor = '#238823';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '#ffd814';
+                }, 1000);
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCartCount();
+            updateCartDisplay();
+        }
+
+        // Update Quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    saveCart();
+                    updateCartCount();
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        // Save Cart to Local Storage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Update Cart Count
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Update Cart Display
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            const emptyCart = cartItems.querySelector('.empty-cart');
+
+            if (cart.length === 0) {
+                if (!emptyCart) {
+                    cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="continue-shopping-btn" onclick="closeCart()">Continue Shopping</button></div>';
+                }
+                cartFooter.style.display = 'none';
+            } else {
+                if (emptyCart) emptyCart.remove();
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p class="cart-item-price">EG${item.price.toFixed(2)}</p>
+                            <div class="cart-item-controls">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="qty-value">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                cartFooter.style.display = 'block';
+                updateCartTotals();
+            }
+        }
+
+        // Update Cart Totals
+        function updateCartTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.14;
+            const total = subtotal + tax;
+
+            document.getElementById('cartSubtotal').textContent = `EG${subtotal.toFixed(2)}`;
+            document.getElementById('cartTax').textContent = `EG${tax.toFixed(2)}`;
+            document.getElementById('cartTotal').textContent = `EG${total.toFixed(2)}`;
+        }
+
+        // Initialize Cart
+        function initializeCart() {
+            updateCartDisplay();
+            document.getElementById('closeCart').addEventListener('click', closeCart);
+            document.getElementById('cartOverlay').addEventListener('click', closeCart);
+            document.getElementById('checkoutBtn').addEventListener('click', openCheckout);
+        }
+
+        // Open/Close Cart
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('active');
+            document.getElementById('cartOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('active');
+            document.getElementById('cartOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Product Detail Modal
+        function showProductDetail(productId) {
+            const product = products[productId];
+            const modal = document.getElementById('productModal');
+            const modalBody = document.getElementById('modalBody');
+
+            modalBody.innerHTML = `
+                <div class="product-detail">
+                    <div class="detail-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="detail-info">
+                        <h2>${product.name}</h2>
+                        <div class="detail-rating">
+                            ${'★'.repeat(product.rating)}${'☆'.repeat(5 - product.rating)}
+                            <span>(${product.reviews.toLocaleString()} reviews)</span>
+                        </div>
+                        <div class="detail-price">
+                            <span class="price-current">EG${product.price.toFixed(2)}</span>
+                            ${product.originalPrice ? `<span class="price-original">EG${product.originalPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        <p class="detail-description">${product.description}</p>
+                        <div class="detail-actions">
+                            <button class="add-to-cart-btn-large" onclick="addToCart(${product.id}); closeProductModal(); openCart();">
+                                Add to Cart
+                            </button>
+                            <button class="buy-now-btn" onclick="buyNow(${product.id})">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function buyNow(productId) {
+            // Clear cart and add single item
+            cart = [{ ...products[productId], quantity: 1 }];
+            saveCart();
+            updateCartCount();
+            closeProductModal();
+            openCheckout();
+        }
+
+        // Initialize Modals
+        function initializeModals() {
+            document.getElementById('closeModal').addEventListener('click', closeProductModal);
+            document.getElementById('modalOverlay').addEventListener('click', closeProductModal);
+            document.getElementById('closeCheckout').addEventListener('click', closeCheckout);
+            document.getElementById('checkoutOverlay').addEventListener('click', closeCheckout);
+        }
+
+        // Checkout
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            closeCart();
+            const checkoutModal = document.getElementById('checkoutModal');
+            const checkoutItems = document.getElementById('checkoutItems');
+
+            checkoutItems.innerHTML = cart.map(item => `
+                <div class="checkout-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div>
+                        <h4>${item.name}</h4>
+                        <p>Qty: ${item.quantity} × EG${item.price.toFixed(2)}</p>
+                    </div>
+                    <span>EG${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.14;
+            const total = subtotal + tax;
+
+            document.getElementById('checkoutSubtotal').textContent = `EG${subtotal.toFixed(2)}`;
+            document.getElementById('checkoutTax').textContent = `EG${tax.toFixed(2)}`;
+            document.getElementById('checkoutTotal').textContent = `EG${total.toFixed(2)}`;
+
+            checkoutModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Place Order
+        document.getElementById('placeOrderBtn').addEventListener('click', function() {
+            const form = document.querySelector('.checkout-form');
+            if (form.checkValidity()) {
+                const orderId = 'ORD-' + Date.now();
+                document.getElementById('orderId').textContent = orderId;
+                
+                // Clear cart
+                cart = [];
+                saveCart();
+                updateCartCount();
+                
+                closeCheckout();
+                document.getElementById('successModal').classList.add('active');
+            } else {
+                form.reportValidity();
+            }
+        });
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // Search Functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const categorySelect = document.querySelector('.search-category');
+
+            function performSearch() {
+                const query = searchInput.value.toLowerCase();
+                const category = categorySelect.value;
+                const productCards = document.querySelectorAll('.product-card');
+
+                productCards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const productId = parseInt(card.querySelector('.add-to-cart-btn').getAttribute('data-product-id'));
+                    const product = products[productId];
+                    
+                    const matchesSearch = !query || title.includes(query);
+                    const matchesCategory = category === 'All' || product.category === category;
+
+                    card.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
+                });
+            }
+
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') performSearch();
+            });
+            categorySelect.addEventListener('change', performSearch);
+        }
+
+        // Carousel functionality
+        function initializeCarousel() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.dot');
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    showSlide(currentSlide);
+                });
+            });
+
+            setInterval(nextSlide, 5000);
+        }
+
+        // Back to top
+        document.querySelector('.back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Format card number input
+        document.getElementById('cardNumber')?.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Format expiry date input
+        document.getElementById('expiryDate')?.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
+
