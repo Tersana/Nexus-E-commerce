@@ -553,10 +553,45 @@ function updateHeaderUserInfo() {
 function openSignInModal() {
   const modal = document.getElementById("signInModal");
   if (modal) {
+    // Check if user is already signed in
+    if (currentUser) {
+      // Show account menu instead of sign-in form
+      showAccountMenu();
+    } else {
+      // Show sign-in form for non-authenticated users
+      document.getElementById("signInTab").style.display = "block";
+      document.getElementById("createAccountTab").style.display = "none";
+      document.getElementById("accountMenuTab").style.display = "none";
+    }
+    
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 }
+
+function showAccountMenu() {
+  // Hide other tabs
+  document.getElementById("signInTab").style.display = "none";
+  document.getElementById("createAccountTab").style.display = "none";
+  
+  // Show account menu
+  const accountMenuTab = document.getElementById("accountMenuTab");
+  if (accountMenuTab) {
+    accountMenuTab.style.display = "block";
+    
+    // Update user info in the account menu
+    const userName = document.getElementById("accountUserName");
+    const userEmail = document.getElementById("accountUserEmail");
+    
+    if (userName && currentUser) {
+      userName.textContent = currentUser.name.split(" ")[0];
+    }
+    if (userEmail && currentUser) {
+      userEmail.textContent = currentUser.email;
+    }
+  }
+}
+
 
 function closeSignInModal() {
   const modal = document.getElementById("signInModal");
@@ -692,6 +727,7 @@ function initializeSignIn() {
   const signInOverlay = document.getElementById("signInOverlay");
   const switchToCreate = document.getElementById("switchToCreate");
   const switchToSignIn = document.getElementById("switchToSignIn");
+  const switchToSignInFromAccount = document.getElementById("switchToSignInFromAccount");
   const signOutBtn = document.getElementById("signOutBtn");
 
   if (closeSignIn) {
@@ -705,6 +741,10 @@ function initializeSignIn() {
     switchToCreate.addEventListener("click", () => {
       document.getElementById("signInTab").style.display = "none";
       document.getElementById("createAccountTab").style.display = "block";
+      document.getElementById("accountMenuTab").style.display = "none";
+      // Update header text
+      const headerText = document.getElementById("modalHeaderText");
+      if (headerText) headerText.textContent = "Create Account";
     });
   }
 
@@ -712,6 +752,26 @@ function initializeSignIn() {
     switchToSignIn.addEventListener("click", () => {
       document.getElementById("createAccountTab").style.display = "none";
       document.getElementById("signInTab").style.display = "block";
+      document.getElementById("accountMenuTab").style.display = "none";
+      // Update header text
+      const headerText = document.getElementById("modalHeaderText");
+      if (headerText) headerText.textContent = "Sign in";
+    });
+  }
+
+  // Handle "Sign in with another account" link
+  if (switchToSignInFromAccount) {
+    switchToSignInFromAccount.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Sign out current user first
+      signOut();
+      // Show sign-in form
+      document.getElementById("accountMenuTab").style.display = "none";
+      document.getElementById("createAccountTab").style.display = "none";
+      document.getElementById("signInTab").style.display = "block";
+      // Update header text
+      const headerText = document.getElementById("modalHeaderText");
+      if (headerText) headerText.textContent = "Sign in";
     });
   }
 
@@ -747,7 +807,10 @@ function initializeSignIn() {
   }
 
   if (signOutBtn) {
-    signOutBtn.addEventListener("click", signOut);
+    signOutBtn.addEventListener("click", () => {
+      signOut();
+      closeSignInModal();
+    });
   }
 }
 
