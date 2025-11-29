@@ -2382,7 +2382,7 @@ function initializeSearch() {
 
 // Product Detail Modal
 function showProductDetail(productId) {
-  const product = products[productId];
+  const product = products.find(p => p.id === productId);
   if (!product) return;
 
   const modal = document.getElementById("productModal");
@@ -3151,16 +3151,16 @@ const routes = {
     title: 'Your Orders - Nexus',
     render: renderOrdersPage
   },
-  'customer-service': {
-    title: 'Customer Service - Nexus',
-    render: renderInfoPage
+  'gift-cards': {
+    title: 'Gift Cards - Nexus',
+    render: renderGiftCardsPage
   },
   'registry': {
     title: 'Registry - Nexus',
-    render: renderInfoPage
+    render: renderRegistryPage
   },
-  'gift-cards': {
-    title: 'Gift Cards - Nexus',
+  'customer-service': {
+    title: 'Customer Service - Nexus',
     render: renderInfoPage
   },
   'sell': {
@@ -3391,6 +3391,647 @@ function renderOrdersPage() {
   displayOrders();
 }
 
+// Gift Cards Page
+function renderGiftCardsPage() {
+  const appContent = document.getElementById('app-content');
+  if (!appContent) return;
+  
+  appContent.innerHTML = `
+    <main class="main-content">
+      <section class="gift-cards-section" style="padding: 40px 20px; max-width: 1400px; margin: 0 auto;">
+        <h1 style="font-size: 36px; margin-bottom: 10px; text-align: center;">Nexus Gift Cards</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 18px;">
+          The perfect gift for any occasion. Let them choose exactly what they want.
+        </p>
+        
+        <!-- Tab Navigation -->
+        <div style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #ddd; justify-content: center;">
+          <button class="gift-tab active" data-tab="purchase" style="padding: 15px 30px; border: none; background: none; font-size: 16px; font-weight: 500; cursor: pointer; border-bottom: 3px solid #ff9900; color: #ff9900;">
+            Purchase Gift Card
+          </button>
+          <button class="gift-tab" data-tab="balance" style="padding: 15px 30px; border: none; background: none; font-size: 16px; font-weight: 500; cursor: pointer; border-bottom: 3px solid transparent; color: #666;">
+            Check Balance
+          </button>
+          <button class="gift-tab" data-tab="redeem" style="padding: 15px 30px; border: none; background: none; font-size: 16px; font-weight: 500; cursor: pointer; border-bottom: 3px solid transparent; color: #666;">
+            Redeem Card
+          </button>
+        </div>
+        
+        <!-- Purchase Tab -->
+        <div id="purchaseTab" class="tab-content" style="display: block;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px;">
+            <!-- Left Column: Card Configuration -->
+            <div>
+              <!-- Gift Card Designs -->
+              <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px;">Choose a Design</h2>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                  <div class="gift-card-design" data-design="birthday" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" data-text="Happy Birthday" style="cursor: pointer; border: 3px solid transparent; border-radius: 8px; padding: 10px; transition: all 0.3s;">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">
+                      Happy Birthday
+                    </div>
+                  </div>
+                  <div class="gift-card-design" data-design="celebration" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" data-text="Celebration" style="cursor: pointer; border: 3px solid transparent; border-radius: 8px; padding: 10px; transition: all 0.3s;">
+                    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">
+                      Celebration
+                    </div>
+                  </div>
+                  <div class="gift-card-design" data-design="thankyou" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" data-text="Thank You" style="cursor: pointer; border: 3px solid transparent; border-radius: 8px; padding: 10px; transition: all 0.3s;">
+                    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">
+                      Thank You
+                    </div>
+                  </div>
+                  <div class="gift-card-design active" data-design="classic" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)" data-text="Gift Card" style="cursor: pointer; border: 3px solid #ff9900; border-radius: 8px; padding: 10px; transition: all 0.3s;">
+                    <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">
+                      Gift Card
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Amount Selection -->
+              <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px;">Select Amount</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;">
+                  <button class="amount-btn" data-amount="25" style="padding: 12px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s;">EG25</button>
+                  <button class="amount-btn" data-amount="50" style="padding: 12px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s;">EG50</button>
+                  <button class="amount-btn active" data-amount="100" style="padding: 12px; border: 2px solid #ff9900; background: #fff3e6; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s;">EG100</button>
+                  <button class="amount-btn" data-amount="200" style="padding: 12px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s;">EG200</button>
+                  <button class="amount-btn" data-amount="500" style="padding: 12px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s;">EG500</button>
+                  <button class="amount-btn" data-amount="1000" style="padding: 12px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s;">EG1000</button>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <label style="font-weight: 500; min-width: 120px;">Custom Amount:</label>
+                  <input type="number" id="customAmount" placeholder="EG 10 - 5000" min="10" max="5000" style="padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; flex: 1;">
+                </div>
+              </div>
+              
+              <!-- Quantity -->
+              <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px;">Quantity</h2>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                  <button id="decreaseQty" style="width: 40px; height: 40px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 20px; cursor: pointer; font-weight: bold;">−</button>
+                  <input type="number" id="giftCardQty" value="1" min="1" max="50" style="width: 80px; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 18px; text-align: center; font-weight: bold;">
+                  <button id="increaseQty" style="width: 40px; height: 40px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 20px; cursor: pointer; font-weight: bold;">+</button>
+                  <span style="color: #666; font-size: 14px;">Save 5% on 5+ cards</span>
+                </div>
+              </div>
+              
+              <!-- Recipient Information -->
+              <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px;">Recipient Information</h2>
+                <div style="display: grid; gap: 12px;">
+                  <input type="text" id="recipientName" placeholder="Recipient's Name *" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                  <input type="email" id="recipientEmail" placeholder="Recipient's Email *" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                  <textarea id="giftMessage" placeholder="Personal Message (Optional - max 200 characters)" maxlength="200" rows="3" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+                  <div style="display: flex; gap: 10px;">
+                    <input type="date" id="deliveryDate" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; flex: 1;">
+                    <select id="deliveryTime" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                      <option value="">Send Now</option>
+                      <option value="morning">Morning (8 AM)</option>
+                      <option value="noon">Noon (12 PM)</option>
+                      <option value="evening">Evening (6 PM)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Sender Information -->
+              <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px;">Your Information</h2>
+                <div style="display: grid; gap: 12px;">
+                  <input type="text" id="senderName" placeholder="Your Name *" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                  <input type="email" id="senderEmail" placeholder="Your Email (for receipt) *" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                  <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" id="sendCopyToSelf" style="width: 18px; height: 18px; cursor: pointer;">
+                    <span>Send me a copy of the gift card</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Column: Live Preview & Summary -->
+            <div>
+              <!-- Live Preview -->
+              <div style="position: sticky; top: 20px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px;">Preview</h2>
+                <div id="cardPreview" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; padding: 40px; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 30px;">
+                  <div style="text-align: center; color: white;">
+                    <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;">NEXUS</div>
+                    <div style="font-size: 24px; font-weight: 500;" id="previewText">Gift Card</div>
+                  </div>
+                  <div style="text-align: center; color: white;">
+                    <div style="font-size: 36px; font-weight: bold;" id="previewAmount">EG100</div>
+                    <div style="font-size: 14px; opacity: 0.9; margin-top: 10px;">Code: XXXX-XXXX-XXXX</div>
+                  </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 12px;">
+                  <h3 style="font-size: 20px; margin-bottom: 20px;">Order Summary</h3>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px;">
+                    <span>Card Amount:</span>
+                    <span id="summaryAmount" style="font-weight: bold;">EG100.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px;">
+                    <span>Quantity:</span>
+                    <span id="summaryQty" style="font-weight: bold;">1</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; color: #28a745;">
+                    <span>Discount:</span>
+                    <span id="summaryDiscount">EG0.00</span>
+                  </div>
+                  <div style="border-top: 2px solid #ddd; margin: 15px 0;"></div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 25px; font-size: 22px; font-weight: bold;">
+                    <span>Total:</span>
+                    <span id="summaryTotal" style="color: #ff9900;">EG100.00</span>
+                  </div>
+                  <button id="purchaseGiftCardBtn" class="hero-btn" style="width: 100%; padding: 15px; font-size: 18px; background: #ff9900; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 10px;">
+                    Purchase Gift Card
+                  </button>
+                  <button id="printPreviewBtn" style="width: 100%; padding: 12px; font-size: 16px; background: white; color: #333; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; font-weight: 500;">
+                    🖨️ Print Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Balance Tab -->
+        <div id="balanceTab" class="tab-content" style="display: none;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 40px 0;">
+            <h2 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Check Gift Card Balance</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Enter your gift card code to check the remaining balance</p>
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 12px;">
+              <input type="text" id="balanceCardCode" placeholder="Enter Gift Card Code (e.g., XXXX-XXXX-XXXX)" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; text-transform: uppercase;">
+              <input type="text" id="balanceCardPin" placeholder="Enter PIN (last 4 digits)" maxlength="4" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
+              <button id="checkBalanceBtn" class="hero-btn" style="width: 100%; padding: 15px; font-size: 18px; background: #ff9900; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                Check Balance
+              </button>
+              <div id="balanceResult" style="margin-top: 30px; display: none;">
+                <div style="text-align: center; padding: 30px; background: white; border-radius: 8px; border: 2px solid #28a745;">
+                  <div style="font-size: 48px; margin-bottom: 10px;">💳</div>
+                  <div style="font-size: 18px; color: #666; margin-bottom: 10px;">Current Balance</div>
+                  <div id="balanceAmount" style="font-size: 42px; font-weight: bold; color: #28a745; margin-bottom: 15px;">EG0.00</div>
+                  <div style="font-size: 14px; color: #666;">Card Status: <span id="cardStatus" style="font-weight: bold; color: #28a745;">Active</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Redeem Tab -->
+        <div id="redeemTab" class="tab-content" style="display: none;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 40px 0;">
+            <h2 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Redeem Gift Card</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Add your gift card to your Nexus account balance</p>
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 12px;">
+              <input type="text" id="redeemCardCode" placeholder="Enter Gift Card Code" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; text-transform: uppercase;">
+              <input type="text" id="redeemCardPin" placeholder="Enter PIN" maxlength="4" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
+              <button id="redeemCardBtn" class="hero-btn" style="width: 100%; padding: 15px; font-size: 18px; background: #ff9900; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                Redeem to Account
+              </button>
+              <div style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-radius: 8px; border-left: 4px solid #2196f3;">
+                <strong>Note:</strong> Once redeemed, the gift card balance will be added to your Nexus account and can be used for any purchase.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Features -->
+        <div style="margin-top: 60px; padding-top: 60px; border-top: 2px solid #ddd;">
+          <h2 style="font-size: 28px; margin-bottom: 40px; text-align: center;">Why Choose Nexus Gift Cards?</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 10px;">📧</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Instant Delivery</h3>
+              <p style="color: #666; font-size: 14px;">Email delivery within minutes or schedule for later</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 10px;">🔒</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">100% Secure</h3>
+              <p style="color: #666; font-size: 14px;">Encrypted transactions and fraud protection</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 10px;">♾️</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Never Expires</h3>
+              <p style="color: #666; font-size: 14px;">No expiration date or hidden fees</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 10px;">🛍️</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Shop Anything</h3>
+              <p style="color: #666; font-size: 14px;">Valid on millions of products</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 10px;">🎁</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Bulk Discounts</h3>
+              <p style="color: #666; font-size: 14px;">Save 5% on 5+ cards, 10% on 10+</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Easy to Use</h3>
+              <p style="color: #666; font-size: 14px;">Redeem online or check balance anytime</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  `;
+  
+  // Initialize gift card interactions
+  initializeEnhancedGiftCardPage();
+}
+
+// Registry Page
+function renderRegistryPage() {
+  const appContent = document.getElementById('app-content');
+  if (!appContent) return;
+  
+  appContent.innerHTML = `
+    <main class="main-content">
+      <section class="registry-section" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        <h1 style="font-size: 36px; margin-bottom: 10px; text-align: center;">Nexus Registry</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 18px;">
+          Create your perfect registry for weddings, baby showers, birthdays, and more.
+        </p>
+        
+        <!-- Registry Options -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
+          <div class="registry-card" style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s;">
+            <div style="font-size: 64px; margin-bottom: 15px;">💍</div>
+            <h3 style="font-size: 24px; margin-bottom: 10px;">Wedding Registry</h3>
+            <p style="color: #666; margin-bottom: 20px;">Start your new life together with everything you need</p>
+            <button class="hero-btn" onclick="createRegistry('wedding')" style="padding: 12px 30px;">Create Wedding Registry</button>
+          </div>
+          
+          <div class="registry-card" style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s;">
+            <div style="font-size: 64px; margin-bottom: 15px;">👶</div>
+            <h3 style="font-size: 24px; margin-bottom: 10px;">Baby Registry</h3>
+            <p style="color: #666; margin-bottom: 20px;">Prepare for your little one's arrival</p>
+            <button class="hero-btn" onclick="createRegistry('baby')" style="padding: 12px 30px;">Create Baby Registry</button>
+          </div>
+          
+          <div class="registry-card" style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s;">
+            <div style="font-size: 64px; margin-bottom: 15px;">🎂</div>
+            <h3 style="font-size: 24px; margin-bottom: 10px;">Birthday Registry</h3>
+            <p style="color: #666; margin-bottom: 20px;">Make your special day even more memorable</p>
+            <button class="hero-btn" onclick="createRegistry('birthday')" style="padding: 12px 30px;">Create Birthday Registry</button>
+          </div>
+        </div>
+        
+        <!-- Find a Registry -->
+        <div style="background: #f8f9fa; padding: 40px; border-radius: 12px; margin-bottom: 50px;">
+          <h2 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Find a Registry</h2>
+          <div style="max-width: 600px; margin: 0 auto;">
+            <div style="display: grid; gap: 15px;">
+              <input type="text" id="registrySearchName" placeholder="Registrant's Name" style="padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <select id="registrySearchType" style="padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                  <option value="">Registry Type</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="baby">Baby</option>
+                  <option value="birthday">Birthday</option>
+                </select>
+                <input type="date" id="registrySearchDate" style="padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+              </div>
+              <button class="hero-btn" onclick="searchRegistry()" style="padding: 15px; font-size: 18px; width: 100%;">Search Registry</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Registry Benefits -->
+        <div>
+          <h2 style="font-size: 28px; margin-bottom: 30px; text-align: center;">Why Create a Nexus Registry?</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 15px;">🎁</div>
+              <h3 style="font-size: 20px; margin-bottom: 10px;">Millions of Products</h3>
+              <p style="color: #666;">Choose from our entire catalog of products</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
+              <h3 style="font-size: 20px; margin-bottom: 10px;">Easy to Manage</h3>
+              <p style="color: #666;">Update your registry anytime, anywhere</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 15px;">🚚</div>
+              <h3 style="font-size: 20px; margin-bottom: 10px;">Free Shipping</h3>
+              <p style="color: #666;">Complimentary shipping on registry items</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 15px;">💝</div>
+              <h3 style="font-size: 20px; margin-bottom: 10px;">Group Gifting</h3>
+              <p style="color: #666;">Friends can contribute to larger items</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 15px;">🔄</div>
+              <h3 style="font-size: 20px; margin-bottom: 10px;">Easy Returns</h3>
+              <p style="color: #666;">180-day return window for registry items</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 15px;">🎉</div>
+              <h3 style="font-size: 20px; margin-bottom: 10px;">Completion Discount</h3>
+              <p style="color: #666;">Get 10% off remaining items after your event</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  `;
+  
+  // Add hover effects
+  const registryCards = document.querySelectorAll('.registry-card');
+  registryCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#ff9900';
+      this.style.transform = 'translateY(-5px)';
+      this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+    });
+    card.addEventListener('mouseleave', function() {
+      this.style.borderColor = '#ddd';
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = 'none';
+    });
+  });
+}
+
+// Initialize Gift Card Page Interactions
+function initializeGiftCardPage() {
+  let selectedDesign = 'classic';
+  let selectedAmount = 100;
+  
+  // Design selection
+  const designCards = document.querySelectorAll('.gift-card-design');
+  designCards.forEach(card => {
+    card.addEventListener('click', function() {
+      designCards.forEach(c => {
+        c.classList.remove('active');
+        c.style.borderColor = 'transparent';
+      });
+      this.classList.add('active');
+      this.style.borderColor = '#ff9900';
+      selectedDesign = this.dataset.design;
+    });
+    
+    // Hover effect
+    card.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('active')) {
+        this.style.borderColor = '#ffc266';
+      }
+    });
+    card.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('active')) {
+        this.style.borderColor = 'transparent';
+      }
+    });
+  });
+  
+  // Amount selection
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  const customAmountInput = document.getElementById('customAmount');
+  const summaryAmount = document.getElementById('summaryAmount');
+  const summaryTotal = document.getElementById('summaryTotal');
+  
+  function updateSummary(amount) {
+    selectedAmount = amount;
+    summaryAmount.textContent = `EG${amount.toFixed(2)}`;
+    summaryTotal.textContent = `EG${amount.toFixed(2)}`;
+  }
+  
+  amountBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      amountBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.borderColor = '#ddd';
+        b.style.background = 'white';
+      });
+      this.classList.add('active');
+      this.style.borderColor = '#ff9900';
+      this.style.background = '#fff3e6';
+      customAmountInput.value = '';
+      updateSummary(parseFloat(this.dataset.amount));
+    });
+  });
+  
+  customAmountInput.addEventListener('input', function() {
+    const amount = parseFloat(this.value);
+    if (amount >= 10 && amount <= 5000) {
+      amountBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.borderColor = '#ddd';
+        b.style.background = 'white';
+      });
+      updateSummary(amount);
+    }
+  });
+  
+  // Purchase button
+  const purchaseBtn = document.getElementById('purchaseGiftCardBtn');
+  purchaseBtn.addEventListener('click', function() {
+    const recipientName = document.getElementById('recipientName').value;
+    const recipientEmail = document.getElementById('recipientEmail').value;
+    
+    if (!recipientName || !recipientEmail) {
+      alert('Please enter recipient name and email');
+      return;
+    }
+    
+    if (!recipientEmail.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    // Show success message
+    const message = `Gift card of EG${selectedAmount.toFixed(2)} will be sent to ${recipientEmail}`;
+    showSuccess(message);
+    
+    // Reset form
+    setTimeout(() => {
+      document.getElementById('recipientName').value = '';
+      document.getElementById('recipientEmail').value = '';
+      document.getElementById('giftMessage').value = '';
+      document.getElementById('deliveryDate').value = '';
+    }, 2000);
+  });
+}
+
+// Registry Functions
+function createRegistry(type) {
+  const typeNames = {
+    'wedding': 'Wedding',
+    'baby': 'Baby',
+    'birthday': 'Birthday'
+  };
+  
+  const typeEmojis = {
+    'wedding': '💍',
+    'baby': '👶',
+    'birthday': '🎂'
+  };
+  
+  // Create modal overlay
+  const modalOverlay = document.createElement('div');
+  modalOverlay.id = 'registryCreationModal';
+  modalOverlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+  `;
+  
+  // Create modal content
+  const modalContent = document.createElement('div');
+  modalContent.style.cssText = `
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+    position: relative;
+  `;
+  
+  modalContent.innerHTML = `
+    <button id="closeRegistryModal" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 28px; cursor: pointer; color: #666; line-height: 1;">&times;</button>
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+      <div style="font-size: 64px; margin-bottom: 10px;">${typeEmojis[type]}</div>
+      <h2 style="font-size: 28px; margin-bottom: 10px;">Create ${typeNames[type]} Registry</h2>
+      <p style="color: #666;">Fill in the details below to create your registry</p>
+    </div>
+    
+    <form id="registryCreationForm">
+      <!-- Event Details -->
+      <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: #333;">Event Details</h3>
+        <div style="display: grid; gap: 15px;">
+          <input type="text" id="eventName" placeholder="${typeNames[type]} Event Name" required style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+          <input type="date" id="eventDate" required style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+          ${type === 'wedding' ? `
+            <input type="text" id="partnerName" placeholder="Partner's Name" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+          ` : ''}
+          ${type === 'baby' ? `
+            <select id="babyGender" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+              <option value="">Baby Gender (Optional)</option>
+              <option value="boy">Boy</option>
+              <option value="girl">Girl</option>
+              <option value="surprise">Surprise</option>
+            </select>
+          ` : ''}
+        </div>
+      </div>
+      
+      <!-- Personal Information -->
+      <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: #333;">Your Information</h3>
+        <div style="display: grid; gap: 15px;">
+          <input type="text" id="registrantName" placeholder="Your Full Name" required style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+          <input type="email" id="registrantEmail" placeholder="Your Email" required style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+          <input type="tel" id="registrantPhone" placeholder="Phone Number" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+          <textarea id="registryMessage" placeholder="Message to Gift Givers (Optional)" rows="3" style="padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+        </div>
+      </div>
+      
+      <!-- Registry Preferences -->
+      <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: #333;">Registry Preferences</h3>
+        <div style="display: grid; gap: 12px;">
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <input type="checkbox" id="allowGroupGifting" checked style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Allow group gifting for expensive items</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <input type="checkbox" id="hideAddress" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Keep shipping address private</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <input type="checkbox" id="sendUpdates" checked style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Send me email updates when items are purchased</span>
+          </label>
+        </div>
+      </div>
+      
+      <button type="submit" class="hero-btn" style="width: 100%; padding: 15px; font-size: 18px; background: #ff9900; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+        Create Registry
+      </button>
+    </form>
+  `;
+  
+  modalOverlay.appendChild(modalContent);
+  document.body.appendChild(modalOverlay);
+  
+  // Close modal function
+  function closeModal() {
+    modalOverlay.remove();
+    document.body.style.overflow = '';
+  }
+  
+  // Close button handler
+  document.getElementById('closeRegistryModal').addEventListener('click', closeModal);
+  
+  // Click outside to close
+  modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+  
+  // Form submission
+  document.getElementById('registryCreationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const eventName = document.getElementById('eventName').value;
+    const eventDate = document.getElementById('eventDate').value;
+    const registrantName = document.getElementById('registrantName').value;
+    const registrantEmail = document.getElementById('registrantEmail').value;
+    
+    if (!eventName || !eventDate || !registrantName || !registrantEmail) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    // Show success message
+    showSuccess(`${typeNames[type]} Registry created successfully! You can now start adding items.`);
+    
+    // Close modal
+    closeModal();
+    
+    // In a real app, this would save to database and redirect to registry management page
+    setTimeout(() => {
+      showSuccess('Redirecting to your registry...');
+    }, 2000);
+  });
+  
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+}
+
+function searchRegistry() {
+  const name = document.getElementById('registrySearchName').value;
+  const type = document.getElementById('registrySearchType').value;
+  
+  if (!name) {
+    alert('Please enter a registrant name');
+    return;
+  }
+  
+  showSuccess(`Searching for ${name}'s registry...`);
+  
+  // In a real app, this would query the database and show results
+  setTimeout(() => {
+    showSuccess('In a real application, this would display matching registries.');
+  }, 1500);
+}
+
 function renderInfoPage() {
   const appContent = document.getElementById('app-content');
   if (!appContent) return;
@@ -3398,8 +4039,6 @@ function renderInfoPage() {
   const route = window.location.hash.slice(1);
   const titles = {
     'customer-service': 'Customer Service',
-    'registry': 'Registry',
-    'gift-cards': 'Gift Cards',
     'sell': 'Sell on Nexus'
   };
   
@@ -3440,3 +4079,239 @@ document.addEventListener("DOMContentLoaded", function () {
   
   console.log('SPA initialized. Current route:', hash);
 });
+// Enhanced Gift Card Page Initialization
+function initializeEnhancedGiftCardPage() {
+  let selectedDesign = 'classic';
+  let selectedGradient = 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)';
+  let selectedText = 'Gift Card';
+  let selectedAmount = 100;
+  let quantity = 1;
+  
+  // Tab switching
+  const tabs = document.querySelectorAll('.gift-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.style.borderBottom = '3px solid transparent';
+        t.style.color = '#666';
+      });
+      this.classList.add('active');
+      this.style.borderBottom = '3px solid #ff9900';
+      this.style.color = '#ff9900';
+      
+      const tabName = this.dataset.tab;
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.style.display = 'none';
+      });
+      document.getElementById(`${tabName}Tab`).style.display = 'block';
+    });
+  });
+  
+  // Design selection with preview update
+  const designCards = document.querySelectorAll('.gift-card-design');
+  const cardPreview = document.getElementById('cardPreview');
+  const previewText = document.getElementById('previewText');
+  
+  designCards.forEach(card => {
+    card.addEventListener('click', function() {
+      designCards.forEach(c => {
+        c.classList.remove('active');
+        c.style.borderColor = 'transparent';
+      });
+      this.classList.add('active');
+      this.style.borderColor = '#ff9900';
+      
+      selectedDesign = this.dataset.design;
+      selectedGradient = this.dataset.gradient;
+      selectedText = this.dataset.text;
+      
+      cardPreview.style.background = selectedGradient;
+      previewText.textContent = selectedText;
+    });
+    
+    card.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('active')) {
+        this.style.borderColor = '#ffc266';
+      }
+    });
+    card.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('active')) {
+        this.style.borderColor = 'transparent';
+      }
+    });
+  });
+  
+  // Amount selection with preview update
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  const customAmountInput = document.getElementById('customAmount');
+  const previewAmount = document.getElementById('previewAmount');
+  
+  function updateSummary() {
+    const amount = selectedAmount;
+    const qty = quantity;
+    const subtotal = amount * qty;
+    
+    // Calculate discount
+    let discount = 0;
+    if (qty >= 10) {
+      discount = subtotal * 0.10; // 10% off for 10+
+    } else if (qty >= 5) {
+      discount = subtotal * 0.05; // 5% off for 5+
+    }
+    
+    const total = subtotal - discount;
+    
+    document.getElementById('summaryAmount').textContent = `EG${amount.toFixed(2)}`;
+    document.getElementById('summaryQty').textContent = qty;
+    document.getElementById('summaryDiscount').textContent = discount > 0 ? `-EG${discount.toFixed(2)}` : 'EG0.00';
+    document.getElementById('summaryTotal').textContent = `EG${total.toFixed(2)}`;
+    previewAmount.textContent = `EG${amount}`;
+  }
+  
+  amountBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      amountBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.borderColor = '#ddd';
+        b.style.background = 'white';
+      });
+      this.classList.add('active');
+      this.style.borderColor = '#ff9900';
+      this.style.background = '#fff3e6';
+      customAmountInput.value = '';
+      selectedAmount = parseFloat(this.dataset.amount);
+      updateSummary();
+    });
+  });
+  
+  customAmountInput.addEventListener('input', function() {
+    const amount = parseFloat(this.value);
+    if (amount >= 10 && amount <= 5000) {
+      amountBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.borderColor = '#ddd';
+        b.style.background = 'white';
+      });
+      selectedAmount = amount;
+      updateSummary();
+    }
+  });
+  
+  // Quantity controls
+  const qtyInput = document.getElementById('giftCardQty');
+  const decreaseBtn = document.getElementById('decreaseQty');
+  const increaseBtn = document.getElementById('increaseQty');
+  
+  decreaseBtn.addEventListener('click', () => {
+    if (quantity > 1) {
+      quantity--;
+      qtyInput.value = quantity;
+      updateSummary();
+    }
+  });
+  
+  increaseBtn.addEventListener('click', () => {
+    if (quantity < 50) {
+      quantity++;
+      qtyInput.value = quantity;
+      updateSummary();
+    }
+  });
+  
+  qtyInput.addEventListener('change', function() {
+    let val = parseInt(this.value);
+    if (val < 1) val = 1;
+    if (val > 50) val = 50;
+    quantity = val;
+    this.value = val;
+    updateSummary();
+  });
+  
+  // Purchase button
+  const purchaseBtn = document.getElementById('purchaseGiftCardBtn');
+  purchaseBtn.addEventListener('click', function() {
+    const recipientName = document.getElementById('recipientName').value;
+    const recipientEmail = document.getElementById('recipientEmail').value;
+    const senderName = document.getElementById('senderName').value;
+    const senderEmail = document.getElementById('senderEmail').value;
+    
+    if (!recipientName || !recipientEmail || !senderName || !senderEmail) {
+      alert('Please fill in all required fields (marked with *)');
+      return;
+    }
+    
+    if (!recipientEmail.includes('@') || !senderEmail.includes('@')) {
+      alert('Please enter valid email addresses');
+      return;
+    }
+    
+    const total = (selectedAmount * quantity) - (quantity >= 10 ? (selectedAmount * quantity * 0.10) : quantity >= 5 ? (selectedAmount * quantity * 0.05) : 0);
+    showSuccess(`${quantity} gift card(s) totaling EG${total.toFixed(2)} will be sent to ${recipientEmail}`);
+    
+    // Reset form
+    setTimeout(() => {
+      document.getElementById('recipientName').value = '';
+      document.getElementById('recipientEmail').value = '';
+      document.getElementById('giftMessage').value = '';
+      document.getElementById('deliveryDate').value = '';
+      document.getElementById('senderName').value = '';
+      document.getElementById('senderEmail').value = '';
+      quantity = 1;
+      qtyInput.value = 1;
+      updateSummary();
+    }, 2000);
+  });
+  
+  // Print Preview button
+  const printBtn = document.getElementById('printPreviewBtn');
+  printBtn.addEventListener('click', () => {
+    showSuccess('Print preview would open in a new window. This is a demo feature.');
+  });
+  
+  // Balance Check
+  const checkBalanceBtn = document.getElementById('checkBalanceBtn');
+  checkBalanceBtn.addEventListener('click', () => {
+    const code = document.getElementById('balanceCardCode').value;
+    const pin = document.getElementById('balanceCardPin').value;
+    
+    if (!code || !pin) {
+      alert('Please enter both gift card code and PIN');
+      return;
+    }
+    
+    // Simulate balance check
+    const randomBalance = (Math.random() * 500 + 50).toFixed(2);
+    document.getElementById('balanceAmount').textContent = `EG${randomBalance}`;
+    document.getElementById('balanceResult').style.display = 'block';
+    showSuccess('Balance retrieved successfully!');
+  });
+  
+  // Redeem Card
+  const redeemBtn = document.getElementById('redeemCardBtn');
+  redeemBtn.addEventListener('click', () => {
+    const code = document.getElementById('redeemCardCode').value;
+    const pin = document.getElementById('redeemCardPin').value;
+    
+    if (!code || !pin) {
+      alert('Please enter both gift card code and PIN');
+      return;
+    }
+    
+    if (!currentUser) {
+      alert('Please sign in to redeem gift cards');
+      return;
+    }
+    
+    const randomAmount = (Math.random() * 500 + 50).toFixed(2);
+    showSuccess(`EG${randomAmount} has been added to your account balance!`);
+    
+    setTimeout(() => {
+      document.getElementById('redeemCardCode').value = '';
+      document.getElementById('redeemCardPin').value = '';
+    }, 2000);
+  });
+  
+  // Initial summary update
+  updateSummary();
+}
