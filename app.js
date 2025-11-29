@@ -3163,9 +3163,9 @@ const routes = {
     title: 'Customer Service - Nexus',
     render: renderInfoPage
   },
-  'sell': {
-    title: 'Sell on Nexus',
-    render: renderInfoPage
+  'help-center': {
+    title: 'Help Center - Nexus',
+    render: renderHelpCenterPage
   }
 };
 
@@ -3560,9 +3560,20 @@ function renderGiftCardsPage() {
         
         <!-- Balance Tab -->
         <div id="balanceTab" class="tab-content" style="display: none;">
-          <div style="max-width: 600px; margin: 0 auto; padding: 40px 0;">
+          <div style="max-width: 700px; margin: 0 auto; padding: 40px 0;">
             <h2 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Check Gift Card Balance</h2>
             <p style="text-align: center; color: #666; margin-bottom: 30px;">Enter your gift card code to check the remaining balance</p>
+            
+            <!-- Help Box -->
+            <div style="background: #e7f3ff; border-left: 4px solid #2196f3; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+              <h3 style="font-size: 18px; margin-bottom: 15px; color: #1976d2;">📧 Where to Find Your Gift Card Information</h3>
+              <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8;">
+                <li><strong>Gift Card Code:</strong> Found in the email you received when the gift card was purchased. Look for a 12-16 character code (e.g., ABCD-1234-EFGH-5678)</li>
+                <li><strong>PIN:</strong> The last 4 digits of the gift card code, also included in the email</li>
+                <li><strong>Can't find your email?</strong> Check your spam folder or <a href="#" style="color: #2196f3; text-decoration: underline;">contact support</a></li>
+              </ul>
+            </div>
+            
             <div style="background: #f8f9fa; padding: 40px; border-radius: 12px;">
               <input type="text" id="balanceCardCode" placeholder="Enter Gift Card Code (e.g., XXXX-XXXX-XXXX)" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; text-transform: uppercase;">
               <input type="text" id="balanceCardPin" placeholder="Enter PIN (last 4 digits)" maxlength="4" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
@@ -3578,22 +3589,59 @@ function renderGiftCardsPage() {
                 </div>
               </div>
             </div>
+            
+            <!-- Additional Help -->
+            <div style="margin-top: 30px; text-align: center; color: #666; font-size: 14px;">
+              <p>Need help? <a href="#" style="color: #ff9900; text-decoration: underline;">View sample gift card email</a> | <a href="#" style="color: #ff9900; text-decoration: underline;">Contact Support</a></p>
+            </div>
           </div>
         </div>
         
         <!-- Redeem Tab -->
         <div id="redeemTab" class="tab-content" style="display: none;">
-          <div style="max-width: 600px; margin: 0 auto; padding: 40px 0;">
+          <div style="max-width: 700px; margin: 0 auto; padding: 40px 0;">
             <h2 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Redeem Gift Card</h2>
             <p style="text-align: center; color: #666; margin-bottom: 30px;">Add your gift card to your Nexus account balance</p>
+            
+            <!-- Help Box -->
+            <div style="background: #fff3e6; border-left: 4px solid #ff9900; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+              <h3 style="font-size: 18px; margin-bottom: 15px; color: #e67e00;">🎁 How to Redeem Your Gift Card</h3>
+              <ol style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8;">
+                <li>Find your gift card code in the email you received</li>
+                <li>Enter the full code and PIN below</li>
+                <li>The balance will be added to your Nexus account</li>
+                <li>Use your balance for any purchase on Nexus</li>
+              </ol>
+              <div style="margin-top: 15px; padding: 12px; background: white; border-radius: 6px; font-size: 14px;">
+                <strong>Example Gift Card Code:</strong> <code style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-family: monospace;">NEXUS-2024-GIFT-1234</code>
+              </div>
+            </div>
+            
             <div style="background: #f8f9fa; padding: 40px; border-radius: 12px;">
               <input type="text" id="redeemCardCode" placeholder="Enter Gift Card Code" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; text-transform: uppercase;">
-              <input type="text" id="redeemCardPin" placeholder="Enter PIN" maxlength="4" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
+              <input type="text" id="redeemCardPin" placeholder="Enter PIN (last 4 digits)" maxlength="4" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
               <button id="redeemCardBtn" class="hero-btn" style="width: 100%; padding: 15px; font-size: 18px; background: #ff9900; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                 Redeem to Account
               </button>
               <div style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-radius: 8px; border-left: 4px solid #2196f3;">
-                <strong>Note:</strong> Once redeemed, the gift card balance will be added to your Nexus account and can be used for any purchase.
+                <strong>Note:</strong> Once redeemed, the gift card balance will be added to your Nexus account and can be used for any purchase. This action cannot be undone.
+              </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div style="margin-top: 40px; padding: 25px; background: white; border: 1px solid #ddd; border-radius: 12px;">
+              <h3 style="font-size: 20px; margin-bottom: 20px;">Frequently Asked Questions</h3>
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #333;">Q: Can I use my gift card without redeeming it?</strong>
+                <p style="color: #666; margin: 5px 0 0 0;">Yes! You can enter the gift card code at checkout without redeeming it to your account.</p>
+              </div>
+              <div style="margin-bottom: 15px;">
+                <strong style="color: #333;">Q: What happens after I redeem?</strong>
+                <p style="color: #666; margin: 5px 0 0 0;">The balance is added to your account and can be used for any future purchases.</p>
+              </div>
+              <div>
+                <strong style="color: #333;">Q: Do gift cards expire?</strong>
+                <p style="color: #666; margin: 5px 0 0 0;">No! Nexus gift cards never expire and have no fees.</p>
               </div>
             </div>
           </div>
@@ -4030,6 +4078,304 @@ function searchRegistry() {
   setTimeout(() => {
     showSuccess('In a real application, this would display matching registries.');
   }, 1500);
+}
+
+// Help Center Page
+function renderHelpCenterPage() {
+  const appContent = document.getElementById('app-content');
+  if (!appContent) return;
+  
+  appContent.innerHTML = `
+    <main class="main-content">
+      <section class="help-center-section" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 50px;">
+          <h1 style="font-size: 36px; margin-bottom: 15px;">Help Center</h1>
+          <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+            Find answers to your questions and get the support you need
+          </p>
+          
+          <!-- Search Box -->
+          <div style="max-width: 600px; margin: 0 auto;">
+            <input 
+              type="text" 
+              id="helpSearch" 
+              placeholder="Search for help articles, FAQs, or topics..." 
+              style="width: 100%; padding: 15px 20px; border: 2px solid #ddd; border-radius: 25px; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+            >
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 50px;">
+          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 12px; text-align: center; color: white; cursor: pointer;" onclick="scrollToSection('orders')">
+            <div style="font-size: 48px; margin-bottom: 10px;">📦</div>
+            <h3 style="font-size: 20px; margin-bottom: 5px;">Orders & Tracking</h3>
+            <p style="font-size: 14px; opacity: 0.9;">Track, modify, or cancel orders</p>
+          </div>
+          <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 30px; border-radius: 12px; text-align: center; color: white; cursor: pointer;" onclick="scrollToSection('shipping')">
+            <div style="font-size: 48px; margin-bottom: 10px;">🚚</div>
+            <h3 style="font-size: 20px; margin-bottom: 5px;">Shipping & Delivery</h3>
+            <p style="font-size: 14px; opacity: 0.9;">Shipping options and times</p>
+          </div>
+          <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 30px; border-radius: 12px; text-align: center; color: white; cursor: pointer;" onclick="scrollToSection('returns')">
+            <div style="font-size: 48px; margin-bottom: 10px;">↩️</div>
+            <h3 style="font-size: 20px; margin-bottom: 5px;">Returns & Refunds</h3>
+            <p style="font-size: 14px; opacity: 0.9;">Return policy and process</p>
+          </div>
+          <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 30px; border-radius: 12px; text-align: center; color: white; cursor: pointer;" onclick="scrollToSection('account')">
+            <div style="font-size: 48px; margin-bottom: 10px;">👤</div>
+            <h3 style="font-size: 20px; margin-bottom: 5px;">Account & Security</h3>
+            <p style="font-size: 14px; opacity: 0.9;">Manage your account</p>
+          </div>
+        </div>
+        
+        <!-- FAQ Sections -->
+        <div style="max-width: 900px; margin: 0 auto;">
+          <h2 style="font-size: 28px; margin-bottom: 30px; text-align: center;">Frequently Asked Questions</h2>
+          
+          <!-- Orders & Tracking -->
+          <div id="orders" class="faq-category" style="margin-bottom: 40px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">📦 Orders & Tracking</h3>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>How can I track my order?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                You can track your order by going to "Your Orders" in your account. Click on the order you want to track and you'll see real-time tracking information. You'll also receive tracking updates via email.
+              </div>
+            </div>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>Can I cancel or modify my order?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                You can cancel or modify your order within 1 hour of placing it. Go to "Your Orders", select the order, and click "Cancel Order" or "Modify Order". After this window, please contact customer service for assistance.
+              </div>
+            </div>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>What if my order hasn't arrived?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                If your order hasn't arrived within the estimated delivery time, first check the tracking information. If it shows delivered but you haven't received it, check with neighbors or building management. Contact us within 48 hours and we'll investigate and resolve the issue.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Shipping & Delivery -->
+          <div id="shipping" class="faq-category" style="margin-bottom: 40px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">🚚 Shipping & Delivery</h3>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>What are the shipping options and costs?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                We offer several shipping options:<br>
+                • Standard Shipping (5-7 business days): Free on orders over EG100<br>
+                • Express Shipping (2-3 business days): EG15<br>
+                • Next-Day Delivery: EG25<br>
+                Shipping costs are calculated at checkout based on your location and order weight.
+              </div>
+            </div>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>Do you ship internationally?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                Yes! We ship to over 100 countries worldwide. International shipping costs and delivery times vary by destination. Customs fees and import duties may apply and are the responsibility of the customer.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Returns & Refunds -->
+          <div id="returns" class="faq-category" style="margin-bottom: 40px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">↩️ Returns & Refunds</h3>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>What is your return policy?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                We offer a 30-day return policy for most items. Products must be unused, in original packaging, and with all tags attached. Some items like personalized products, perishables, and intimate items cannot be returned. Registry items have a 180-day return window.
+              </div>
+            </div>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>How do I return an item?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                To return an item:<br>
+                1. Go to "Your Orders" and select the item<br>
+                2. Click "Return Item" and select a reason<br>
+                3. Print the prepaid return label<br>
+                4. Pack the item securely and attach the label<br>
+                5. Drop off at any authorized shipping location<br>
+                You'll receive a refund within 5-7 business days after we receive your return.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Account & Security -->
+          <div id="account" class="faq-category" style="margin-bottom: 40px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">👤 Account & Security</h3>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>How do I reset my password?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                Click on "Sign In" and then "Forgot Password". Enter your email address and we'll send you a password reset link. Follow the instructions in the email to create a new password. For security, the link expires after 24 hours.
+              </div>
+            </div>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>How do I update my account information?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                Sign in to your account and click on your name in the top right corner. Select "Account Settings" to update your email, password, shipping addresses, and payment methods. Changes are saved automatically.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Payment -->
+          <div id="payment" class="faq-category" style="margin-bottom: 40px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">💳 Payment & Billing</h3>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>What payment methods do you accept?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                We accept all major credit cards (Visa, Mastercard, American Express), debit cards, PayPal, Apple Pay, Google Pay, and Nexus Gift Cards. All transactions are encrypted and secure.
+              </div>
+            </div>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>Is my payment information secure?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                Yes! We use industry-standard SSL encryption to protect your payment information. We never store your full credit card details on our servers. All transactions are processed through secure, PCI-compliant payment gateways.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Products -->
+          <div id="products" class="faq-category" style="margin-bottom: 40px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">🛍️ Products & Stock</h3>
+            
+            <div class="faq-item" style="background: white; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+              <div class="faq-question" style="padding: 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFAQ(this)">
+                <span>When will out-of-stock items be available?</span>
+                <span style="font-size: 24px; transition: transform 0.3s;">+</span>
+              </div>
+              <div class="faq-answer" style="display: none; padding: 0 20px 20px 20px; color: #666; line-height: 1.6;">
+                Restock dates vary by product. You can sign up for email notifications on the product page to be alerted when an item is back in stock. We typically restock popular items within 2-4 weeks.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 50px 30px; border-radius: 12px; margin-top: 60px; text-align: center; color: white;">
+          <h2 style="font-size: 32px; margin-bottom: 15px;">Still Need Help?</h2>
+          <p style="font-size: 18px; margin-bottom: 30px; opacity: 0.9;">Our customer support team is here to assist you</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto;">
+            <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+              <div style="font-size: 36px; margin-bottom: 10px;">📧</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Email Support</h3>
+              <p style="font-size: 14px; margin-bottom: 10px; opacity: 0.9;">support@nexus.com</p>
+              <p style="font-size: 12px; opacity: 0.8;">Response within 24 hours</p>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+              <div style="font-size: 36px; margin-bottom: 10px;">💬</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Live Chat</h3>
+              <button class="hero-btn" style="background: white; color: #667eea; padding: 10px 20px; margin-top: 10px;" onclick="alert('Live chat feature coming soon!')">Start Chat</button>
+              <p style="font-size: 12px; opacity: 0.8; margin-top: 10px;">Available 9 AM - 9 PM</p>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+              <div style="font-size: 36px; margin-bottom: 10px;">📞</div>
+              <h3 style="font-size: 18px; margin-bottom: 10px;">Phone Support</h3>
+              <p style="font-size: 14px; margin-bottom: 10px; opacity: 0.9;">1-800-NEXUS-HELP</p>
+              <p style="font-size: 12px; opacity: 0.8;">Mon-Fri: 8 AM - 8 PM</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  `;
+  
+  // Initialize FAQ functionality
+  initializeHelpCenter();
+}
+
+// Help Center Initialization
+function initializeHelpCenter() {
+  // Search functionality
+  const searchInput = document.getElementById('helpSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+        
+        if (question.includes(query) || answer.includes(query)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = query ? 'none' : 'block';
+        }
+      });
+    });
+  }
+}
+
+// Toggle FAQ Answer
+function toggleFAQ(element) {
+  const answer = element.nextElementSibling;
+  const icon = element.querySelector('span:last-child');
+  
+  if (answer.style.display === 'none' || !answer.style.display) {
+    answer.style.display = 'block';
+    icon.textContent = '−';
+    icon.style.transform = 'rotate(0deg)';
+  } else {
+    answer.style.display = 'none';
+    icon.textContent = '+';
+    icon.style.transform = 'rotate(0deg)';
+  }
+}
+
+// Scroll to Section
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function renderInfoPage() {
