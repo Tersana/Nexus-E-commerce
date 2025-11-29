@@ -1958,6 +1958,201 @@ html {
         font-size: 18px;
         color: #111827;
         margin: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Review Content */
+    .review-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .review-header-modern {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        gap: 15px;
+    }
+
+    .review-user-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .review-user-name {
+        font-size: 16px;
+        color: #111827;
+        font-weight: 600;
+    }
+
+    .verified-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        color: #067d62;
+        font-weight: 500;
+    }
+
+    .verified-badge svg {
+        stroke: #067d62;
+    }
+
+    .review-rating-modern {
+        color: #14b8a6;
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+    .review-comment-modern {
+        color: #111827;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .review-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .review-date-modern {
+        color: #888;
+        font-size: 13px;
+    }
+
+    .review-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .helpful-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        border: 1px solid #ddd;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        color: #666;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .helpful-btn:hover {
+        background: #f8f9fa;
+        border-color: #10b981;
+        color: #111827;
+    }
+
+    .helpful-btn svg {
+        stroke: currentColor;
+    }
+
+    /* No Reviews Modern */
+    .no-reviews-modern {
+        text-align: center;
+        padding: 60px 20px;
+        background: #f8f9fa;
+        border-radius: 12px;
+    }
+
+    .no-reviews-modern svg {
+        stroke: #ccc;
+        margin-bottom: 20px;
+    }
+
+    .no-reviews-modern h4 {
+        font-size: 20px;
+        color: #111827;
+        margin-bottom: 10px;
+    }
+
+    .no-reviews-modern p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    /* Responsive Design for Modern Reviews */
+    @media (max-width: 768px) {
+        .reviews-header-modern {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .overall-rating {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .review-item-modern {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .review-header-modern {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .review-footer {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+    }
+
+    /* ========================================
+   FILTER SIDEBAR STYLES
+   ======================================== */
+
+    /* Shop Container Layout */
+    .shop-container {
+        display: flex;
+        gap: 20px;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* Filter Sidebar */
+    .filter-sidebar {
+        width: 280px;
+        flex-shrink: 0;
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+        position: sticky;
+        top: 80px;
+    }
+
+    /* Filter Header */
+    .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e7e7e7;
+    }
+
+    .filter-header h3 {
+        font-size: 18px;
+        color: #111827;
+        margin: 0;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -1965,5 +2160,36 @@ html {
 
     .filter-header svg {
         stroke: #667eea;
+    }
+}
+
+/* ========================================
+   FAQ HIGHLIGHT EFFECT
+   ======================================== */
+
+/* FAQ Category Highlight Animation */
+.faq-highlight {
+    animation: faqPulse 2s ease-in-out;
+    background-color: #fff3e6 !important;
+    border-radius: 12px;
+    padding: 20px;
+    margin: -20px;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+}
+
+@keyframes faqPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        background-color: #fff3e6;
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0.3);
+        background-color: #fffbf0;
+    }
+
+    100% {
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+        background-color: #fff3e6;
     }
 }

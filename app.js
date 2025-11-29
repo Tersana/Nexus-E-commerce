@@ -4374,7 +4374,30 @@ function toggleFAQ(element) {
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Remove highlight from all sections first
+    const allSections = document.querySelectorAll('.faq-category');
+    allSections.forEach(s => s.classList.remove('faq-highlight'));
+    
+    // Calculate the position with offset for sticky header
+    const headerOffset = 170; // Account for sticky header height + some padding
+    const elementPosition = section.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+    // Scroll to the section with offset
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+    
+    // Add highlight effect after a short delay to ensure scroll has started
+    setTimeout(() => {
+      section.classList.add('faq-highlight');
+      
+      // Remove highlight after animation completes
+      setTimeout(() => {
+        section.classList.remove('faq-highlight');
+      }, 2000);
+    }, 500);
   }
 }
 
