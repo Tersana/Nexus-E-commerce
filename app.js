@@ -3110,6 +3110,1237 @@ function initializeCategoryPage(category) {
   }
 }
 
+// Render Sell Page
+function renderSellPage() {
+  const appContent = document.getElementById('app-content');
+  if (!appContent) return;
+  
+  // Load sell.css if not already loaded
+  if (!document.querySelector('link[href="sell.css"]')) {
+    const sellCSS = document.createElement('link');
+    sellCSS.rel = 'stylesheet';
+    sellCSS.href = 'sell.css';
+    document.head.appendChild(sellCSS);
+  }
+  
+  // Load Google Fonts for sell page
+  if (!document.querySelector('link[href*="fonts.googleapis.com/css2?family=Inter"]')) {
+    const googleFonts = document.createElement('link');
+    googleFonts.rel = 'stylesheet';
+    googleFonts.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap';
+    document.head.appendChild(googleFonts);
+  }
+  
+  appContent.innerHTML = `
+    <!-- Hero Section -->
+    <section class="sell-hero">
+      <div class="sell-hero-content">
+        <div class="sell-hero-text">
+          <h1 class="sell-hero-title">Sell on Nexus: start selling online today!</h1>
+          <p class="sell-hero-subtitle">
+            Join thousands of successful sellers and reach millions of customers worldwide
+          </p>
+          <div class="sell-hero-buttons">
+            <button class="sell-btn-primary" id="registerNowBtn">
+              <span>Register now</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="sell-btn-secondary" id="getStartedBtn">
+              <span>Get started</span>
+            </button>
+          </div>
+          <p class="sell-hero-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            For a limited time only, Professional accounts are now available with no monthly subscription fee.
+          </p>
+        </div>
+        <div class="sell-hero-image">
+          <div class="floating-box"></div>
+          <img src="images/nexus-box.png" alt="Nexus Package" id="heroPackageImg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="sell-stats">
+      <div class="sell-stats-container">
+        <div class="stat-item">
+          <div class="stat-number" data-target="300">0</div>
+          <div class="stat-label">Million+ Customers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="185">0</div>
+          <div class="stat-label">Countries Worldwide</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2.5">0</div>
+          <div class="stat-label">Million+ Active Sellers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="99.9">0</div>
+          <div class="stat-label">% Uptime Guarantee</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="sell-benefits">
+      <div class="sell-container">
+        <h2 class="section-title">Why sell on Nexus?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3>Reach millions of customers</h3>
+            <p>Access a vast customer base across 185+ countries and grow your business globally with Nexus's trusted platform.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <h3>Easy to get started</h3>
+            <p>Set up your seller account in minutes with our simple registration process. No technical expertise required.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3>Low fees, high returns</h3>
+            <p>Competitive pricing with transparent fees. Keep more of what you earn with our seller-friendly commission structure.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>Fulfillment by Nexus</h3>
+            <p>Let us handle storage, packing, and shipping. Focus on growing your business while we take care of logistics.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Trusted brand</h3>
+            <p>Leverage Nexus's reputation for reliability and customer service to build trust with your customers.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>24/7 seller support</h3>
+            <p>Get help whenever you need it with our dedicated seller support team available around the clock.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="sell-pricing">
+      <div class="sell-container">
+        <h2 class="section-title">Choose your selling plan</h2>
+        <p class="section-subtitle">Select the plan that best fits your business needs</p>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-badge">Most Popular</div>
+            <h3 class="pricing-title">Individual</h3>
+            <div class="pricing-price">
+              <span class="price-currency">EG</span>
+              <span class="price-amount">0</span>
+              <span class="price-period">/month</span>
+            </div>
+            <p class="pricing-description">Perfect for sellers just getting started</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>EG0.99 per item sold</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Access to basic selling tools</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Sell in 20+ categories</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Standard seller support</span>
+              </li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+          <div class="pricing-card featured">
+            <div class="pricing-badge featured-badge">Limited Offer</div>
+            <h3 class="pricing-title">Professional</h3>
+            <div class="pricing-price">
+              <span class="price-currency">EG</span>
+              <span class="price-amount">0</span>
+              <span class="price-period">/month</span>
+            </div>
+            <p class="pricing-description">For established businesses scaling up</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>No per-item fees</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Advanced selling tools & analytics</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Sell in all categories</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Priority seller support</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Bulk listing & inventory tools</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>API access for automation</span>
+              </li>
+            </ul>
+            <button class="pricing-btn featured-btn">Start Free Trial</button>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-badge">Enterprise</div>
+            <h3 class="pricing-title">Business</h3>
+            <div class="pricing-price">
+              <span class="price-text">Custom</span>
+            </div>
+            <p class="pricing-description">Tailored solutions for large enterprises</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Custom pricing & terms</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Dedicated account manager</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>White-label solutions</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Custom integrations</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Advanced analytics & reporting</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>SLA guarantees</span>
+              </li>
+            </ul>
+            <button class="pricing-btn">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="sell-how-it-works">
+      <div class="sell-container">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-subtitle">Start selling in 4 simple steps</p>
+        <div class="steps-container">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Create your account</h3>
+              <p>Sign up for free and choose your selling plan. No credit card required to get started.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>List your products</h3>
+              <p>Add your products with photos, descriptions, and pricing. Our tools make it quick and easy.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Receive orders</h3>
+              <p>Get notified when customers place orders. Manage everything from your seller dashboard.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Ship & get paid</h3>
+              <p>Ship products to customers or use FBN. Receive payments directly to your bank account.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="sell-testimonials">
+      <div class="sell-container">
+        <h2 class="section-title">What sellers say about us</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">
+              "Nexus has transformed my small business. I went from selling locally to reaching customers worldwide. The platform is incredibly easy to use!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-info">
+                <div class="author-name">Sarah Mitchell</div>
+                <div class="author-title">Handmade Jewelry Seller</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">
+              "The Fulfillment by Nexus service is a game-changer. I can focus on creating products while they handle all the logistics. My sales have tripled!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JC</div>
+              <div class="author-info">
+                <div class="author-name">James Chen</div>
+                <div class="author-title">Electronics Retailer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">
+              "Best decision for my business. The seller support team is amazing, and the analytics tools help me understand my customers better."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">EP</div>
+              <div class="author-info">
+                <div class="author-name">Emily Parker</div>
+                <div class="author-title">Fashion Boutique Owner</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="sell-cta">
+      <div class="sell-cta-content">
+        <h2>Ready to start your selling journey?</h2>
+        <p>Join millions of sellers worldwide and grow your business with Nexus</p>
+        <div class="cta-buttons">
+          <button class="cta-btn-primary">Register Now</button>
+          <button class="cta-btn-secondary">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="sell-faq">
+      <div class="sell-container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How much does it cost to sell on Nexus?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>For Individual sellers, there's no monthly fee - you only pay EG0.99 per item sold. Professional sellers currently enjoy no monthly subscription fee (limited time offer) and no per-item fees. Additional selling fees may apply based on category.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What can I sell on Nexus?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>You can sell almost anything on Nexus, from electronics and fashion to home goods and handmade items. We have over 30 product categories. Some restricted categories require approval before you can start selling.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I get paid?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Payments are deposited directly into your bank account every 14 days. You can track all your sales and payments in your Seller Central dashboard. We support multiple payment methods and currencies.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is Fulfillment by Nexus (FBN)?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>FBN is our fulfillment service where we store your products in our warehouses, pack and ship orders, handle customer service, and manage returns. This allows you to focus on growing your business while we handle the logistics.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do I need a business license to sell?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Requirements vary by country and product category. Individual sellers can start without a business license in most cases. Professional sellers may need to provide business documentation. Check your local regulations for specific requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+  
+  // Load and initialize sell.js functionality
+  setTimeout(() => {
+    initializeSellPage();
+  }, 100);
+}
+
+// Initialize Sell Page functionality
+function initializeSellPage() {
+  // Counter Animation for Stats
+  function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = target % 1 === 0 ? target : target.toFixed(1);
+        clearInterval(timer);
+      } else {
+        element.textContent = current % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+      }
+    }, 16);
+  }
+
+  // Intersection Observer for Counter Animation
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const statNumbers = entry.target.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+          const target = parseFloat(stat.getAttribute('data-target'));
+          animateCounter(stat, target);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe stats section
+  const statsSection = document.querySelector('.sell-stats-container');
+  if (statsSection) {
+    statsObserver.observe(statsSection);
+  }
+
+  // FAQ Accordion
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all FAQ items
+      faqItems.forEach(faq => faq.classList.remove('active'));
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+
+  // Button Click Handlers
+  const registerNowBtn = document.getElementById('registerNowBtn');
+  const getStartedBtn = document.getElementById('getStartedBtn');
+  
+  if (registerNowBtn) {
+    registerNowBtn.addEventListener('click', () => {
+      showRegistrationModal();
+    });
+  }
+
+  if (getStartedBtn) {
+    getStartedBtn.addEventListener('click', () => {
+      const howItWorksSection = document.querySelector('.sell-how-it-works');
+      if (howItWorksSection) {
+        howItWorksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+  // All CTA buttons
+  const ctaButtons = document.querySelectorAll('.cta-btn-primary, .pricing-btn');
+  ctaButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showRegistrationModal();
+    });
+  });
+
+  // Learn More buttons
+  const learnMoreButtons = document.querySelectorAll('.cta-btn-secondary');
+  learnMoreButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const benefitsSection = document.querySelector('.sell-benefits');
+      if (benefitsSection) {
+        benefitsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Generate placeholder image if needed
+  const heroImg = document.getElementById('heroPackageImg');
+  if (heroImg) {
+    heroImg.onerror = function() {
+      // Create canvas for placeholder
+      const canvas = document.createElement('canvas');
+      canvas.width = 500;
+      canvas.height = 500;
+      const ctx = canvas.getContext('2d');
+
+      // Draw gradient background
+      const gradient = ctx.createLinearGradient(0, 0, 500, 500);
+      gradient.addColorStop(0, '#f97316');
+      gradient.addColorStop(1, '#ea580c');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 500, 500);
+
+      // Draw box shape
+      ctx.fillStyle = '#fbbf24';
+      ctx.fillRect(100, 150, 300, 200);
+
+      // Draw smile
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.arc(250, 280, 80, 0.2 * Math.PI, 0.8 * Math.PI);
+      ctx.stroke();
+
+      // Draw arrow
+      ctx.fillStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.moveTo(380, 250);
+      ctx.lineTo(420, 280);
+      ctx.lineTo(380, 310);
+      ctx.fill();
+
+      // Set canvas as image source
+      heroImg.src = canvas.toDataURL();
+    };
+  }
+}
+
+// Show Registration Modal (reused from sell.js)
+function showRegistrationModal() {
+  // Create modal
+  const modal = document.createElement('div');
+  modal.className = 'registration-modal';
+  modal.innerHTML = `
+    <div class="registration-overlay"></div>
+    <div class="registration-content">
+      <button class="close-registration">&times;</button>
+      <h2>Start Selling on Nexus</h2>
+      <p class="registration-subtitle">Join thousands of successful sellers today</p>
+      <form class="registration-form" id="registrationForm">
+        <div class="form-group">
+          <label for="businessName">Business Name</label>
+          <input type="text" id="businessName" name="businessName" required placeholder="Enter your business name">
+        </div>
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="sellingPlan">Selling Plan</label>
+          <select id="sellingPlan" name="sellingPlan" required>
+            <option value="">Select a plan</option>
+            <option value="individual">Individual - EG0/month</option>
+            <option value="professional">Professional - EG0/month (Limited Offer)</option>
+            <option value="business">Business - Custom Pricing</option>
+          </select>
+        </div>
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" name="terms" required>
+            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+          </label>
+        </div>
+        <button type="submit" class="submit-registration-btn">Create Seller Account</button>
+      </form>
+      <p class="registration-note">Already have an account? <a href="#" id="signInLink">Sign in</a></p>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+
+  // Add styles for modal
+  if (!document.getElementById('modal-styles')) {
+    const style = document.createElement('style');
+    style.id = 'modal-styles';
+    style.textContent = `
+      .registration-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .registration-modal.active {
+        opacity: 1;
+      }
+
+      .registration-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+      }
+
+      .registration-content {
+        position: relative;
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .registration-modal.active .registration-content {
+        transform: scale(1);
+      }
+
+      .close-registration {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: #64748b;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .close-registration:hover {
+        background: #f1f5f9;
+        color: #0f172a;
+      }
+
+      .registration-content h2 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      .registration-subtitle {
+        font-size: 16px;
+        color: #64748b;
+        margin-bottom: 30px;
+      }
+
+      .registration-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .form-group label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #0f172a;
+      }
+
+      .form-group input,
+      .form-group select {
+        padding: 12px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        font-family: inherit;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      }
+
+      .checkbox-group label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #475569;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .checkbox-group a {
+        color: #10b981;
+        text-decoration: none;
+      }
+
+      .checkbox-group a:hover {
+        text-decoration: underline;
+      }
+
+      .submit-registration-btn {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border: none;
+        padding: 14px 30px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
+
+      .submit-registration-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+      }
+
+      .submit-registration-btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .registration-note {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      .registration-note a {
+        color: #10b981;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .registration-note a:hover {
+        text-decoration: underline;
+      }
+
+      .success-message {
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .success-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 30px;
+        background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scaleIn 0.5s ease;
+      }
+
+      .success-icon svg {
+        color: #10b981;
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .success-message h2 {
+        color: #10b981;
+        margin-bottom: 15px;
+      }
+
+      .success-message p {
+        font-size: 16px;
+        color: #475569;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .success-note {
+        font-size: 14px !important;
+        color: #64748b !important;
+      }
+
+      .success-btn {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border: none;
+        padding: 14px 40px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .success-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Animate modal in
+  setTimeout(() => {
+    modal.classList.add('active');
+  }, 10);
+
+  // Close modal handlers
+  const closeBtn = modal.querySelector('.close-registration');
+  const overlay = modal.querySelector('.registration-overlay');
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      modal.remove();
+      document.body.style.overflow = '';
+    }, 300);
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+
+  // Form submission
+  const form = modal.querySelector('#registrationForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Show loading state
+    const submitBtn = form.querySelector('.submit-registration-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Creating Account...';
+    submitBtn.disabled = true;
+
+    // Simulate API call
+    setTimeout(() => {
+      const content = modal.querySelector('.registration-content');
+      content.innerHTML = `
+        <div class="success-message">
+          <div class="success-icon">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h2>Welcome to Nexus Seller Central!</h2>
+          <p>Your seller account for <strong>${data.businessName}</strong> has been created successfully.</p>
+          <p class="success-note">We've sent a confirmation email with next steps to get started.</p>
+          <button class="success-btn" onclick="window.location.hash='#home'">Go to Dashboard</button>
+        </div>
+      `;
+    }, 2000);
+  });
+
+  // Sign in link
+  const signInLink = modal.querySelector('#signInLink');
+  signInLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal();
+    openSignInModal();
+  });
+}
+
+// Customer Service Page
+function renderCustomerServicePage() {
+  const appContent = document.getElementById('app-content');
+  if (!appContent) return;
+  
+  appContent.innerHTML = `
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 60px 20px; text-align: center; color: white;">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px;">How can we help you?</h1>
+          <p style="font-size: 20px; color: #cbd5e1; margin-bottom: 40px;">We're here 24/7 to assist you with any questions or concerns</p>
+          
+          <!-- Search Bar -->
+          <div style="position: relative; max-width: 600px; margin: 0 auto;">
+            <input 
+              type="text" 
+              id="customerServiceSearch" 
+              placeholder="Search for help..." 
+              style="width: 100%; padding: 18px 60px 18px 24px; font-size: 16px; border: none; border-radius: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);"
+            />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Contact Options -->
+      <section style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+        <h2 style="font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 50px; color: #0f172a;">Contact Us</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+          
+          <!-- Live Chat -->
+          <div style="background: white; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; border: 2px solid transparent; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#10b981'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Live Chat</h3>
+            <p style="color: #64748b; margin-bottom: 20px; line-height: 1.6;">Chat with our support team in real-time</p>
+            <button onclick="startLiveChat()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Start Chat</button>
+            <p style="margin-top: 15px; font-size: 14px; color: #10b981; font-weight: 600;">● Available Now</p>
+          </div>
+
+          <!-- Phone Support -->
+          <div style="background: white; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Phone Support</h3>
+            <p style="color: #64748b; margin-bottom: 20px; line-height: 1.6;">Speak directly with our support team</p>
+            <a href="tel:+1-800-NEXUS-24" style="display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Call Now</a>
+            <p style="margin-top: 15px; font-size: 14px; color: #64748b;">1-800-NEXUS-24</p>
+          </div>
+
+          <!-- Email Support -->
+          <div style="background: white; padding: 40px 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#f97316'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h3 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Email Support</h3>
+            <p style="color: #64748b; margin-bottom: 20px; line-height: 1.6;">Get detailed help via email</p>
+            <a href="mailto:support@nexus.com" style="display: inline-block; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Send Email</a>
+            <p style="margin-top: 15px; font-size: 14px; color: #64748b;">Response within 24 hours</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Topics -->
+      <section style="padding: 60px 20px; background: linear-gradient(180deg, #f8fafc 0%, white 100%);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <h2 style="font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 50px; color: #0f172a;">Popular Topics</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            
+            <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.3s ease;" onclick="window.location.hash='#help-center'" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #0f172a;">Order Tracking</h3>
+              </div>
+              <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Track your order and get delivery updates</p>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.3s ease;" onclick="window.location.hash='#help-center'" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6 19 18 5 18 3 6"></polyline>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #0f172a;">Returns & Refunds</h3>
+              </div>
+              <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Easy returns within 30 days of purchase</p>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.3s ease;" onclick="window.location.hash='#help-center'" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                  </svg>
+                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #0f172a;">Payment Methods</h3>
+              </div>
+              <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Manage your payment options securely</p>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.3s ease;" onclick="window.location.hash='#help-center'" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'">
+              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #0f172a;">Account Settings</h3>
+              </div>
+              <p style="color: #64748b; font-size: 14px; line-height: 1.6;">Update your profile and preferences</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section style="padding: 60px 20px; max-width: 900px; margin: 0 auto;">
+        <h2 style="font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 50px; color: #0f172a;">Frequently Asked Questions</h2>
+        <div id="customerServiceFAQ">
+          <div class="cs-faq-item" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden;">
+            <button class="cs-faq-question" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; cursor: pointer; font-size: 18px; font-weight: 600; color: #0f172a; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;" onclick="toggleCSFAQ(this)">
+              <span>How do I track my order?</span>
+              <svg class="cs-faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s ease;">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="cs-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <div style="padding: 0 25px 25px 25px; color: #64748b; line-height: 1.7;">
+                You can track your order by visiting the "Orders" page in your account. You'll receive a tracking number via email once your order ships. Click on the tracking number to see real-time updates on your delivery status.
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-faq-item" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden;">
+            <button class="cs-faq-question" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; cursor: pointer; font-size: 18px; font-weight: 600; color: #0f172a; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;" onclick="toggleCSFAQ(this)">
+              <span>What is your return policy?</span>
+              <svg class="cs-faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s ease;">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="cs-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <div style="padding: 0 25px 25px 25px; color: #64748b; line-height: 1.7;">
+                We offer a 30-day return policy for most items. Products must be in their original condition and packaging. To initiate a return, go to your Orders page, select the item, and click "Return Item." We'll provide a prepaid shipping label for your convenience.
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-faq-item" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden;">
+            <button class="cs-faq-question" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; cursor: pointer; font-size: 18px; font-weight: 600; color: #0f172a; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;" onclick="toggleCSFAQ(this)">
+              <span>How long does shipping take?</span>
+              <svg class="cs-faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s ease;">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="cs-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <div style="padding: 0 25px 25px 25px; color: #64748b; line-height: 1.7;">
+                Standard shipping typically takes 3-5 business days. Express shipping is available for 1-2 day delivery. Free shipping is offered on orders over EG100. Delivery times may vary based on your location and product availability.
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-faq-item" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden;">
+            <button class="cs-faq-question" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; cursor: pointer; font-size: 18px; font-weight: 600; color: #0f172a; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;" onclick="toggleCSFAQ(this)">
+              <span>What payment methods do you accept?</span>
+              <svg class="cs-faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s ease;">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="cs-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <div style="padding: 0 25px 25px 25px; color: #64748b; line-height: 1.7;">
+                We accept all major credit cards (Visa, Mastercard, American Express), debit cards, PayPal, Apple Pay, Google Pay, and Nexus Gift Cards. All transactions are encrypted and secure.
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-faq-item" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden;">
+            <button class="cs-faq-question" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; cursor: pointer; font-size: 18px; font-weight: 600; color: #0f172a; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;" onclick="toggleCSFAQ(this)">
+              <span>How do I contact customer support?</span>
+              <svg class="cs-faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s ease;">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="cs-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+              <div style="padding: 0 25px 25px 25px; color: #64748b; line-height: 1.7;">
+                You can reach us 24/7 through live chat, phone (1-800-NEXUS-24), or email (support@nexus.com). Our team is always ready to help with any questions or concerns you may have.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 80px 20px; text-align: center; color: white;">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px;">Still need help?</h2>
+          <p style="font-size: 20px; margin-bottom: 40px; color: rgba(255,255,255,0.9);">Our support team is here to assist you</p>
+          <button onclick="startLiveChat()" style="background: white; color: #10b981; border: none; padding: 16px 40px; font-size: 18px; font-weight: 600; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">Start Live Chat</button>
+        </div>
+      </section>
+    </main>
+  `;
+}
+
+// Toggle Customer Service FAQ
+function toggleCSFAQ(button) {
+  const item = button.closest('.cs-faq-item');
+  const answer = item.querySelector('.cs-faq-answer');
+  const icon = button.querySelector('.cs-faq-icon');
+  const isActive = item.classList.contains('active');
+  
+  // Close all FAQs
+  document.querySelectorAll('.cs-faq-item').forEach(faq => {
+    faq.classList.remove('active');
+    faq.querySelector('.cs-faq-answer').style.maxHeight = '0';
+    faq.querySelector('.cs-faq-icon').style.transform = 'rotate(0deg)';
+    faq.querySelector('.cs-faq-question').style.color = '#0f172a';
+  });
+  
+  // Open clicked FAQ if it wasn't active
+  if (!isActive) {
+    item.classList.add('active');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    icon.style.transform = 'rotate(180deg)';
+    button.style.color = '#10b981';
+  }
+}
+
+// Start Live Chat
+function startLiveChat() {
+  showSuccess('Live chat feature coming soon! For now, please call us at 1-800-NEXUS-24 or email support@nexus.com');
+}
+
 // ========================================
 // SPA ROUTER - Single Page Application
 // ========================================
@@ -3155,17 +4386,17 @@ const routes = {
     title: 'Gift Cards - Nexus',
     render: renderGiftCardsPage
   },
-  'registry': {
-    title: 'Registry - Nexus',
-    render: renderRegistryPage
-  },
   'customer-service': {
     title: 'Customer Service - Nexus',
-    render: renderInfoPage
+    render: renderCustomerServicePage
   },
   'help-center': {
     title: 'Help Center - Nexus',
     render: renderHelpCenterPage
+  },
+  'sell': {
+    title: 'Sell on Nexus - Start Selling Online Today',
+    render: renderSellPage
   }
 };
 

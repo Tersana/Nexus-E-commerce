@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sell on Nexus - Start Your Online Business Today</title>
+    <meta name="description" content="Join thousands of sellers on Nexus. Start selling online with no monthly subscription fees and reach millions of customers worldwide." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="sell.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="app.js" defer></script>
+    <script src="sell.js" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="logo" onclick="window.location.href='index.html'">
+          <span class="logo-text">Nexus</span>
+        </div>
+        <div class="search-container">
+          <select class="search-category">
+            <option>All</option>
+            <option>Electronics</option>
+            <option>Fashion</option>
+            <option>Home & Kitchen</option>
+            <option>Books</option>
+            <option>Sports & Outdoors</option>
+            <option>Toys & Games</option>
+          </select>
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search Nexus"
+          />
+          <button class="search-btn" id="searchBtn">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="header-right">
+          <div class="header-item">
+            <span class="header-line-1">Hello, Sign in</span>
+            <span class="header-line-2">Account & Lists</span>
+          </div>
+          <div class="header-item">
+            <span class="header-line-1">Returns</span>
+            <span class="header-line-2">& Orders</span>
+          </div>
+          <div class="header-item cart">
+            <div class="cart-icon">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+                ></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+              <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <span class="header-line-2">Cart</span>
+          </div>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          All
+        </a>
+        <a href="#" class="nav-link">Today's Deals</a>
+        <a href="#" class="nav-link">Customer Service</a>
+        <a href="#" class="nav-link">Registry</a>
+        <a href="#" class="nav-link">Gift Cards</a>
+        <a href="sell.html" class="nav-link active-sell">Sell</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="sell-hero">
+      <div class="sell-hero-content">
+        <div class="sell-hero-text">
+          <h1 class="sell-hero-title">Sell on Nexus: start selling online today!</h1>
+          <p class="sell-hero-subtitle">
+            Join thousands of successful sellers and reach millions of customers worldwide
+          </p>
+          <div class="sell-hero-buttons">
+            <button class="sell-btn-primary" id="registerNowBtn">
+              <span>Register now</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="sell-btn-secondary" id="getStartedBtn">
+              <span>Get started</span>
+            </button>
+          </div>
+          <p class="sell-hero-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            For a limited time only, Professional accounts are now available with no monthly subscription fee.
+          </p>
+        </div>
+        <div class="sell-hero-image">
+          <div class="floating-box"></div>
+          <img src="images/nexus-box.png" alt="Nexus Package" id="heroPackageImg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="sell-stats">
+      <div class="sell-stats-container">
+        <div class="stat-item">
+          <div class="stat-number" data-target="300">0</div>
+          <div class="stat-label">Million+ Customers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="185">0</div>
+          <div class="stat-label">Countries Worldwide</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2.5">0</div>
+          <div class="stat-label">Million+ Active Sellers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="99.9">0</div>
+          <div class="stat-label">% Uptime Guarantee</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="sell-benefits">
+      <div class="sell-container">
+        <h2 class="section-title">Why sell on Nexus?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3>Reach millions of customers</h3>
+            <p>Access a vast customer base across 185+ countries and grow your business globally with Nexus's trusted platform.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <h3>Easy to get started</h3>
+            <p>Set up your seller account in minutes with our simple registration process. No technical expertise required.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3>Low fees, high returns</h3>
+            <p>Competitive pricing with transparent fees. Keep more of what you earn with our seller-friendly commission structure.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>Fulfillment by Nexus</h3>
+            <p>Let us handle storage, packing, and shipping. Focus on growing your business while we take care of logistics.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Trusted brand</h3>
+            <p>Leverage Nexus's reputation for reliability and customer service to build trust with your customers.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>24/7 seller support</h3>
+            <p>Get help whenever you need it with our dedicated seller support team available around the clock.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="sell-pricing">
+      <div class="sell-container">
+        <h2 class="section-title">Choose your selling plan</h2>
+        <p class="section-subtitle">Select the plan that best fits your business needs</p>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-badge">Most Popular</div>
+            <h3 class="pricing-title">Individual</h3>
+            <div class="pricing-price">
+              <span class="price-currency">EG</span>
+              <span class="price-amount">0</span>
+              <span class="price-period">/month</span>
+            </div>
+            <p class="pricing-description">Perfect for sellers just getting started</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>EG0.99 per item sold</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Access to basic selling tools</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Sell in 20+ categories</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Standard seller support</span>
+              </li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+          <div class="pricing-card featured">
+            <div class="pricing-badge featured-badge">Limited Offer</div>
+            <h3 class="pricing-title">Professional</h3>
+            <div class="pricing-price">
+              <span class="price-currency">EG</span>
+              <span class="price-amount">0</span>
+              <span class="price-period">/month</span>
+            </div>
+            <p class="pricing-description">For established businesses scaling up</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>No per-item fees</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Advanced selling tools & analytics</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Sell in all categories</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Priority seller support</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Bulk listing & inventory tools</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>API access for automation</span>
+              </li>
+            </ul>
+            <button class="pricing-btn featured-btn">Start Free Trial</button>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-badge">Enterprise</div>
+            <h3 class="pricing-title">Business</h3>
+            <div class="pricing-price">
+              <span class="price-text">Custom</span>
+            </div>
+            <p class="pricing-description">Tailored solutions for large enterprises</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Custom pricing & terms</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Dedicated account manager</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>White-label solutions</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Custom integrations</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Advanced analytics & reporting</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>SLA guarantees</span>
+              </li>
+            </ul>
+            <button class="pricing-btn">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="sell-how-it-works">
+      <div class="sell-container">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-subtitle">Start selling in 4 simple steps</p>
+        <div class="steps-container">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Create your account</h3>
+              <p>Sign up for free and choose your selling plan. No credit card required to get started.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>List your products</h3>
+              <p>Add your products with photos, descriptions, and pricing. Our tools make it quick and easy.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Receive orders</h3>
+              <p>Get notified when customers place orders. Manage everything from your seller dashboard.</p>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Ship & get paid</h3>
+              <p>Ship products to customers or use FBN. Receive payments directly to your bank account.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="sell-testimonials">
+      <div class="sell-container">
+        <h2 class="section-title">What sellers say about us</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">
+              "Nexus has transformed my small business. I went from selling locally to reaching customers worldwide. The platform is incredibly easy to use!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-info">
+                <div class="author-name">Sarah Mitchell</div>
+                <div class="author-title">Handmade Jewelry Seller</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">
+              "The Fulfillment by Nexus service is a game-changer. I can focus on creating products while they handle all the logistics. My sales have tripled!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JC</div>
+              <div class="author-info">
+                <div class="author-name">James Chen</div>
+                <div class="author-title">Electronics Retailer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <span>★★★★★</span>
+            </div>
+            <p class="testimonial-text">
+              "Best decision for my business. The seller support team is amazing, and the analytics tools help me understand my customers better."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">EP</div>
+              <div class="author-info">
+                <div class="author-name">Emily Parker</div>
+                <div class="author-title">Fashion Boutique Owner</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="sell-cta">
+      <div class="sell-cta-content">
+        <h2>Ready to start your selling journey?</h2>
+        <p>Join millions of sellers worldwide and grow your business with Nexus</p>
+        <div class="cta-buttons">
+          <button class="cta-btn-primary">Register Now</button>
+          <button class="cta-btn-secondary">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="sell-faq">
+      <div class="sell-container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How much does it cost to sell on Nexus?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>For Individual sellers, there's no monthly fee - you only pay EG0.99 per item sold. Professional sellers currently enjoy no monthly subscription fee (limited time offer) and no per-item fees. Additional selling fees may apply based on category.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What can I sell on Nexus?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>You can sell almost anything on Nexus, from electronics and fashion to home goods and handmade items. We have over 30 product categories. Some restricted categories require approval before you can start selling.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I get paid?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Payments are deposited directly into your bank account every 14 days. You can track all your sales and payments in your Seller Central dashboard. We support multiple payment methods and currencies.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is Fulfillment by Nexus (FBN)?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>FBN is our fulfillment service where we store your products in our warehouses, pack and ship orders, handle customer service, and manage returns. This allows you to focus on growing your business while we handle the logistics.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do I need a business license to sell?</span>
+              <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Requirements vary by country and product category. Individual sellers can start without a business license in most cases. Professional sellers may need to provide business documentation. Check your local regulations for specific requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <a href="#" class="back-to-top">Back to top</a>
+      </div>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Get to Know Us</h3>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Nexus</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Nexus Devices</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Make Money with Us</h3>
+          <ul>
+            <li><a href="sell.html">Sell products on Nexus</a></li>
+            <li><a href="#">Sell on Nexus Business</a></li>
+            <li><a href="#">Sell apps on Nexus</a></li>
+            <li><a href="#">Become an Affiliate</a></li>
+            <li><a href="#">Advertise Your Products</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Nexus Payment Products</h3>
+          <ul>
+            <li><a href="#">Nexus Business Card</a></li>
+            <li><a href="#">Shop with Points</a></li>
+            <li><a href="#">Reload Your Balance</a></li>
+            <li><a href="#">Nexus Currency Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Need Help?</h3>
+          <ul>
+            <li><a href="#">COVID-19 and Nexus</a></li>
+            <li><a href="#">Your Account</a></li>
+            <li><a href="#">Your Orders</a></li>
+            <li><a href="#">Shipping Rates & Policies</a></li>
+            <li><a href="#">Returns & Replacements</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-logo">
+          <span class="logo-text">Nexus</span>
+        </div>
+        <div class="footer-links">
+          <a href="#">Conditions of Use</a>
+          <a href="#">Privacy Notice</a>
+          <a href="#">Interest-Based Ads</a>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2004-2025, Nexus.com, Inc. or its affiliates</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
